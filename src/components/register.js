@@ -3,34 +3,40 @@ import { Button, Modal, Form } from 'semantic-ui-react'
 
 const Register = (props) => {
     return (
-        <Modal trigger={<Button primary>Register</Button>}>
+        <Modal trigger={<button class="ui blue basic inverted button" role="button">Register</button>}>
             <Modal.Header>Let's get you signed up.</Modal.Header>
             <Modal.Content image>
                 <Modal.Description>
                     <p>Fill out the form below (all fields required) to sign up for a BestBoard account.</p>
                     <p>All fields required</p>
-                    <Form >
+                    <Form onSubmit={props.handleRegister}>
                         <Form.Field>
                             <label>Name</label>
-                            <input />
+                            <input  name='name'
+                                    value={props.name}  />
                         </Form.Field>
                         <Form.Field>
                             <label>E-Mail Address</label>
-                            <input />
+                            <input  name='email'
+                                    value={props.email} />
                         </Form.Field>
                         <Form.Field>
                             <label>Organization</label>
-                            <input />
+                            <input  name='organization'
+                                    value={props.organization}  />
                         </Form.Field>
                         <Form.Field>
                             <label>Role in Organization</label>
-                            <input />
+                            <input  name='role'
+                                    value={props.role}  />
                         </Form.Field>
                         <Form.Field>
                             <label>Password</label>
-                            <input />
+                            <input  name='password'
+                                    value={props.password}
+                                    type='password'  />
                         </Form.Field>
-                        <Button onClick={props.handleSubmit} type="submit">Submit</Button>
+                        <Button type="submit">Submit</Button>
                     </Form>
                 </Modal.Description>
             </Modal.Content>
