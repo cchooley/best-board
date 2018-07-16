@@ -2,32 +2,74 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+header {
+  background-color: #373737;
+  font-family: 'Muli', sans-serif;
+  color: #DCD0C0;
+  border-bottom: 1vh black solid;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 2vh;
 }
 
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.title {
+  padding: 0vh;
+  margin: 0vh;
 }
 
-.Header {
-  background-color: red;
+.mainLand {
+  background: url(./assets/hero1.jpg);
+  background-size: cover;
+  background-color: #DCD0C0;
+  background-blend-mode: luminosity;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
-.App-title {
-  font-size: 1.5em;
+.innerLand {
+  float: left;
+  background-color: rgb(55, 55, 55, .8);
+  margin: 40vh;
+  padding: 10vh;
+  display: flex;
+  flex-flow: column;
+  border: 1px #DCD0C0 solid;
+  color: #F4F4F4
 }
 
-.App-intro {
-  font-size: large;
+footer {
+  border-top: 1vh black solid;
+  background: black;
+  color: #DCD0C0;
+}
+
+.gold {
+  color: #C0B283;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+/*
+
+gold: COB283
+silk: DCD0C0
+paper: F4F4F4
+dark-grey: 373737
+
+*/
