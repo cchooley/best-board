@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Modal } from 'semantic-ui-react'
 
 import Register from './register'
+import Login from './login'
 
 const Landing = (props) => {
     return (
@@ -12,7 +12,7 @@ const Landing = (props) => {
                 <h3>Create your own account or login below.</h3>
                 <div class="landButton">
                     <Register />
-                    <Button secondary>Login</Button>
+                    <Login />
                 </div>
             </div>
         </div>
