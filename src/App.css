@@ -18,6 +18,8 @@ header {
   padding: 0vh;
   margin: 0vh;
   font-size: 4vh;
+  border-bottom: .2vh #C0B283 solid;
+  border-top: .2vh #C0B283 solid;
 }
 
 .mainLand {
