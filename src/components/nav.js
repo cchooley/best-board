@@ -33,6 +33,9 @@ export default class Nav extends Component {
             .then(result => {
                 if (result.token) {
                     window.localStorage.token = result.token
+                    this.setState({
+                        loggedIn: !this.state.loggedIn
+                    })
                 } else {
                     alert(result.error)
                 }
@@ -59,6 +62,9 @@ export default class Nav extends Component {
                 console.log(result)
                 if (result.token) {
                     window.localStorage.token = result.token
+                    this.setState({
+                        loggedIn: !this.state.loggedIn
+                    })
                 } else {
                     alert("This didn't work because:" + result.error)
                 }
@@ -70,16 +76,34 @@ export default class Nav extends Component {
         delete window.localStorage.token
     }
 
+
     render() {
+        if(this.state.loggedIn) {
+            return (
+                <div>
+                //redirect here
+                    <Button onClick={this.logOut}>Logout</Button>
+                </div>
+            )
+        }
+
+    const token = window.localStorage.token
+
     return (
         <header>
-            <h1 class="title"><span class="gold">B</span>est<span class="gold">B</span>oard</h1>
-            <div>
-                <Register   handleRegister={this.handleRegister}/>
-                <Login      handleLogin={this.handleLogin} />
-                <Button     onClick={this.logOut}>Logout</Button>
+            {!token ? (
+            <div class="header">
+                <div>
+                    <h1 class="title"><span class="gold">B</span>est<span class="gold">B</span>oard</h1>
+                </div>
+                <div class="logins">
+                    <Register handleRegister={this.handleRegister} />
+                    <Login handleLogin={this.handleLogin} />
+                </div>
             </div>
+            ) : (
+                <Button onClick={this.logOut}>Logout</Button>
+            )}
         </header>
-    )
-}
+    )}
 }

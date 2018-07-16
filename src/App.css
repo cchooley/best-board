@@ -3,7 +3,7 @@
 }
 
 
-header {
+.header {
   background-color: #373737;
   font-family: 'Muli', sans-serif;
   color: #DCD0C0;
@@ -11,6 +11,7 @@ header {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  align-items: center;
   padding: 2vh;
 }
 
@@ -20,6 +21,10 @@ header {
   font-size: 4vh;
   border-bottom: .2vh #C0B283 solid;
   border-top: .2vh #C0B283 solid;
+}
+
+.logins {
+  padding: .5vw
 }
 
 .mainLand {
