@@ -17,6 +17,7 @@ header {
 .title {
   padding: 0vh;
   margin: 0vh;
+  font-size: 4vh;
 }
 
 .mainLand {
@@ -25,26 +26,27 @@ header {
   background-color: #DCD0C0;
   background-blend-mode: luminosity;
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   align-items: center;
+  justify-content: center
 }
 
 .innerLand {
-  float: left;
   background-color: rgb(55, 55, 55, .8);
-  margin: 40vh;
-  padding: 10vh;
+  margin: 15vh;
+  padding: 8vh;
   display: flex;
   flex-flow: column;
-  border: 1px #DCD0C0 solid;
+  border: .5vh #DCD0C0 solid;
   color: #F4F4F4
 }
 
 footer {
   border-top: 1vh black solid;
-  background: black;
+  background: #373737;
   color: #DCD0C0;
+  padding: 1vh;
 }
 
 .gold {
@@ -57,6 +59,10 @@ footer {
 
 .right {
   float: right;
+}
+
+.big {
+  font-size: xx-large;
 }
 
 @keyframes App-logo-spin {
