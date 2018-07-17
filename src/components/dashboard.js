@@ -3,6 +3,7 @@ import { Button, Modal, Form } from 'semantic-ui-react'
 
 import Nav from './nav'
 import Edit from './editProfile'
+import Delete from './deleteProfile'
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -38,6 +39,8 @@ export default class Dashboard extends Component {
                         <h5>{profile.organization}</h5>
                         <h5>{profile.email}</h5>
                         <Edit   handleEdit={this.props.handleEdit} 
+                                userId={this.props.userId} />
+                        <Delete handleDelete={this.props.handleDelete}
                                 userId={this.props.userId} />
                     </div>
                 </div>

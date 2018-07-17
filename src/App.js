@@ -117,12 +117,45 @@ class App extends Component {
       headers: new Headers({ "content-type": "application/json" }),
       body: body
     })
-      .then(console.log)
-      // .then(response => response.json())
-      // .then(result => {
-      //   console.log(result)
-      // })
   }
+
+  handleEdit = (event, id) => {
+    event.preventDefault()
+    const editURL = `${usersURL}/${id}`
+    const formData = new FormData(event.target)
+    const body = JSON.stringify({
+      name: formData.get("name"),
+      email: formData.get("email"),
+      image: formData.get("image"),
+      organization: formData.get("organization"),
+      role: formData.get("role"),
+    })
+    fetch(editURL, {
+      method: "PUT",
+      headers: new Headers({ "content-type": "application/json" }),
+      body: body
+    })
+      .then(console.log)
+    // .then(response => response.json())
+    // .then(result => {
+    //   console.log(result)
+    // })
+  }
+
+  handleDelete = (event, id) => {
+    event.preventDefault()
+    const deleteURL = `${usersURL}/${id}`
+    fetch(deleteURL, {
+      method: "DELETE",
+      headers: new Headers({ "content-type": "application/json" })
+    })
+      .then(console.log)
+    // .then(response => response.json())
+    // .then(result => {
+    //   console.log(result)
+    // })
+  }
+
 
   render() {
     
@@ -140,6 +173,7 @@ class App extends Component {
                   userData={this.state.userData}
                   updateUserID={this.updateUserID} 
                   handleEdit={this.handleEdit}
+                  handleDelete={this.handleDelete}
                   getUsers={this.getUsers}  
                   userId={this.state.userId}/>} />
             </Switch>
