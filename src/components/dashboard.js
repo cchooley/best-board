@@ -37,7 +37,8 @@ export default class Dashboard extends Component {
                         <h5>{profile.role}</h5>
                         <h5>{profile.organization}</h5>
                         <h5>{profile.email}</h5>
-                        <Edit />
+                        <Edit   handleEdit={this.props.handleEdit} 
+                                userId={this.props.userId} />
                     </div>
                 </div>
             </div>

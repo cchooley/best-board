@@ -7,7 +7,7 @@ const Edit = (props) => {
             <Modal.Header>Update your profile.</Modal.Header>
             <Modal.Content image>
                 <Modal.Description>
-                    <Form onSubmit={props.handleRegister}>
+                    <Form onSubmit={(event) => props.handleEdit(event, props.userId)}>
                         <Form.Field>
                             <label>Name</label>
                             <input name='name'
@@ -20,8 +20,8 @@ const Edit = (props) => {
                         </Form.Field>
                         <Form.Field>
                             <label>Profile Image</label>
-                            <input name='picture'
-                                value={props.picture} />
+                            <input name='image'
+                                value={props.image} />
                         </Form.Field>
                         <Form.Field>
                             <label>Organization</label>
