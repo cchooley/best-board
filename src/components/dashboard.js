@@ -37,11 +37,13 @@ export default class Dashboard extends Component {
                         <h5>{profile.role}</h5>
                         <h5>{profile.organization}</h5>
                         <h5>{profile.email}</h5>
-                        <Edit   handleEdit={this.props.handleEdit} 
-                                userId={this.props.userId} />
-                        <Delete handleDelete={this.props.handleDelete}
-                                userId={this.props.userId} 
-                                logOut={this.props.logOut} />
+                        <div className="udContainer">
+                            <Edit   handleEdit={this.props.handleEdit} 
+                                    userId={this.props.userId} />
+                            <Delete handleDelete={this.props.handleDelete}
+                                    userId={this.props.userId} 
+                                    logOut={this.props.logOut} />
+                        </div>
                     </div>
                 </div>
             </div>

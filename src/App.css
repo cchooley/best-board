@@ -104,7 +104,13 @@ h5 {
   height: 10vh;
   width: 10vw;
   margin: 1vh;
-  border-radius: 5vw;
+}
+
+.udContainer {
+  display: flex;
+  flex-flow: row;
+  margin: .5vh;
+  padding: .5vh;
 }
 
 /*
