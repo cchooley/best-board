@@ -3,7 +3,7 @@ import { Button, Modal, Form } from 'semantic-ui-react'
 
 const Login = (props) => {
     return (
-        <Modal trigger={<button class="ui yellow basic inverted button" primary>Login</button>}>
+        <Modal trigger={<button className="ui yellow basic inverted button" primary>Login</button>}>
             <Modal.Header>Log in to your account</Modal.Header>
             <Modal.Content image>
                 <Modal.Description>

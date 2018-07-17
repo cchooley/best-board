@@ -12,13 +12,13 @@
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2vh;
+  padding: 2.5vh;
 }
 
 .title {
   padding: 0vh;
   margin: 0vh;
-  font-size: 4vh;
+  font-size: 3vw;
   border-bottom: .2vh #C0B283 solid;
   border-top: .2vh #C0B283 solid;
 }
@@ -77,6 +77,28 @@ footer {
   to { transform: rotate(360deg); }
 }
 
+.sideNav {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  border-right: .5vh #373737 solid;
+  width: 15vw;
+  padding: 2.5vh;
+  background: #DCD0C0;
+}
+
+a {
+  color: #373737;
+}
+
+a:hover {
+  color: #F4F4F4;
+}
+
+h4 {
+  margin: .1vh;
+}
 
 /*
 

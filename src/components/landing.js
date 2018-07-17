@@ -1,70 +1,43 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 
 import Register from './register'
 import Login from './login'
+import Nav from './nav'
+
 
 const loginURL = 'https://bestboard-db.herokuapp.com/auth/login'
 const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
 
 export default class Landing extends Component {
-    handleLogin = (event) => {
-        event.preventDefault()
-        const formData = new FormData(event.target)
-        const body = JSON.stringify({
-            email: formData.get("email"),
-            password: formData.get("password")
-        })
-        fetch(loginURL, {
-            method: "POST",
-            headers: new Headers({ "content-type": "application/json" }),
-            body: body
-        })
-            .then(response => response.json())
-            .then(result => {
-                if (result.token) {
-                    window.localStorage.token = result.token
-                } else {
-                    alert(result.error)
-                }
-            })
-    }
 
-    handleRegister = (event) => {
-        event.preventDefault()
-        const formData = new FormData(event.target)
-        const body = JSON.stringify({
-            name: formData.get("name"),
-            email: formData.get("email"),
-            organization: formData.get("organization"),
-            role: formData.get("role"),
-            password: formData.get("password")
-        })
-        fetch(registerURL, {
-            method: "POST",
-            headers: new Headers({ "content-type": "application/json" }),
-            body: body
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result)
-                if (result.token) {
-                    window.localStorage.token = result.token
-                } else {
-                    alert("This didn't work because:" + result.error)
-                }
-            })
-    }
 
     render () {
+        const token = window.localStorage.token
+        if (token) {
+            return (
+                <div>
+                    <Redirect to='/dashboard' />
+                </div>
+            )
+        }
+
         return (
-            <div class="mainLand">
-                <div class="innerLand">
-                    <h2 class="big gold">Get in motion.</h2>
-                    <h3>Welcome to <span class="gold">BestBoard</span>, the number one new app for managing productivity in non-profit governance.</h3>
-                    <h3>Create your own account or login below.</h3>
-                    <div class="landButton">
-                        <Register handleRegister={this.handleRegister} />
-                        <Login handleLogin={this.handleLogin} />
+            <div>
+                <Nav    updateUserID={this.props.updateUserID}
+                        handleRegister={this.props.handleRegister}
+                        handleLogin={this.props.handleLogin}/>
+                <div className="mainLand">
+                    <div className="innerLand">
+                        <h2 className="big gold">Get in motion.</h2>
+                        <h3>Welcome to <span className="gold">BestBoard</span>, the number one new app for managing productivity in non-profit governance.</h3>
+                        <h3>Create your own account or login below.</h3>
+                        <div className="landButton">
+                            <Register   handleRegister={this.props.handleRegister}
+                                        updateUserID={this.props.updateUserID} />
+                            <Login      handleLogin={this.props.handleLogin} 
+                                        updateUserID={this.props.updateUserID}/>
+                        </div>
                     </div>
                 </div>
             </div>
