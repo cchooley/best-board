@@ -3,8 +3,6 @@ import { Redirect } from 'react-router-dom'
 
 import Register from './register'
 import Login from './login'
-import Dashboard from './dashboard'
-import jwtDecode from 'jwt-decode'
 
 
 
@@ -17,11 +15,6 @@ export default class Nav extends Component {
         this.state = {
             loggedIn: false
         }
-    }
-
-    logOut = () => {
-        delete window.localStorage.token
-        window.location.href = '/'
     }
 
     render() {
@@ -41,7 +34,7 @@ export default class Nav extends Component {
                 </div>
                 { (window.localStorage.token) 
                     ? <div className="logins">
-                        <button className="ui blue basic inverted button" onClick={this.logOut}>Log Out</button>
+                        <button className="ui blue basic inverted button" onClick={this.props.logOut}>Log Out</button>
                     </div>
                     : <div className="logins">
                         <Register handleRegister={this.props.handleRegister} />

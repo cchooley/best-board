@@ -43,6 +43,11 @@ class App extends Component {
         })
   }
   
+  logOut = () => {
+    delete window.localStorage.token
+    window.location.href = '/'
+  }
+
   handleLogin = (event) => {
     event.preventDefault()
     const formData = new FormData(event.target)
@@ -149,11 +154,9 @@ class App extends Component {
       method: "DELETE",
       headers: new Headers({ "content-type": "application/json" })
     })
-      .then(console.log)
-    // .then(response => response.json())
-    // .then(result => {
-    //   console.log(result)
-    // })
+    .then(
+      this.logOut()
+    )
   }
 
 
@@ -174,6 +177,7 @@ class App extends Component {
                   updateUserID={this.updateUserID} 
                   handleEdit={this.handleEdit}
                   handleDelete={this.handleDelete}
+                  logOut={this.logOut}
                   getUsers={this.getUsers}  
                   userId={this.state.userId}/>} />
             </Switch>

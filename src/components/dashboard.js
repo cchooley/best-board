@@ -9,9 +9,8 @@ export default class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loginEmail: '',
-            loginPassword: '',
-            loggedIn: false,
+            edited: false,
+            deleted: false
         }
     }
 
@@ -30,7 +29,7 @@ export default class Dashboard extends Component {
 
         return (
             <div>              
-                <Nav />
+                <Nav logOut={this.props.logOut} />
                 <div className="mainDash">
                     <div className="sideNav">
                         <h3>Hello, {profile.name}!</h3>
@@ -41,7 +40,8 @@ export default class Dashboard extends Component {
                         <Edit   handleEdit={this.props.handleEdit} 
                                 userId={this.props.userId} />
                         <Delete handleDelete={this.props.handleDelete}
-                                userId={this.props.userId} />
+                                userId={this.props.userId} 
+                                logOut={this.props.logOut} />
                     </div>
                 </div>
             </div>
