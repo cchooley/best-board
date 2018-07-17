@@ -22,7 +22,7 @@ export default class Dashboard extends Component {
 
     render() {
         let profile = this.props.userData
-            .filter(profile => profile.id == this.props.userId)
+        profile.filter(profile => profile.id == this.props.userId)
         if(profile.length) {
             profile = profile[0]
         }
