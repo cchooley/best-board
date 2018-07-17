@@ -96,8 +96,15 @@ a:hover {
   color: #F4F4F4;
 }
 
-h4 {
+h5 {
   margin: .1vh;
+}
+
+.avatar {
+  height: 10vh;
+  width: 10vw;
+  margin: 1vh;
+  border-radius: 5vw;
 }
 
 /*
