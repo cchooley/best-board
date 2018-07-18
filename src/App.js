@@ -18,7 +18,6 @@ class App extends Component {
     super(props)
     this.state = {
       userId: '',
-      loggedIn: false,
       userData: []
     }
   }
@@ -66,9 +65,6 @@ class App extends Component {
           window.localStorage.token = result.token
           let decode = jwtDecode(result.token)
           this.updateUserID(decode.userId)
-          this.setState({
-            loggedIn: true
-          })
         } else {
           alert(result.error)
         }
@@ -96,9 +92,6 @@ class App extends Component {
           window.localStorage.token = result.token
           let decode = jwtDecode(result.token)
           this.updateUserID(decode.userId)
-          this.setState({
-            loggedIn: true
-          })
         } else {
           alert("This didn't work because:" + result.error)
         }
@@ -109,6 +102,7 @@ class App extends Component {
     event.preventDefault()
     const editURL = `${usersURL}/${id}`
     const formData = new FormData(event.target)
+    console.log(event.target)
     const body = JSON.stringify({
       name: formData.get("name"),
       email: formData.get("email"),
@@ -116,11 +110,13 @@ class App extends Component {
       organization: formData.get("organization"),
       role: formData.get("role"),
     })
+    console.log(body)
     fetch(editURL, {
       method: "PUT",
       headers: new Headers({ "content-type": "application/json" }),
       body: body
     })
+//    .then(window.location.reload())
   }
 
   handleDelete = (event, id) => {
@@ -131,10 +127,9 @@ class App extends Component {
       method: "DELETE",
       headers: new Headers({ "content-type": "application/json" })
     })
-      .then(result => {
-        delete window.localStorage.token
-        window.location.reload()
-      })
+      .then({ "message": "deleted" })
+//      .then(delete window.localStorage.token)
+//      .then(window.location.reload())
   }
 
 

@@ -114,6 +114,11 @@ h5 {
   padding: .5vh;
 }
 
+.dashView {
+  display: flex;
+  flex-flow: row;
+}
+
 .calendar {
   border: .5vh #373737 solid;
   padding: 1.5vh

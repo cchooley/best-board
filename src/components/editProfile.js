@@ -36,7 +36,6 @@ const Edit = (props) => {
                                 value={props.role} />
                         </Form.Field>
                         <Button type="submit">Submit</Button>
-                        <Delete />
                     </Form>
                 </Modal.Description>
             </Modal.Content>

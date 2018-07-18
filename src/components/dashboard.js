@@ -43,9 +43,16 @@ export default class Dashboard extends Component {
                                     userId={this.props.userId} 
                                     handleDelete={this.props.handleDelete}
                                     logOut={this.props.logOut} />
+                            <Delete handleDelete={this.props.handleDelete} 
+                            userId={this.props.userId} />
                         </div>
                     </div>
-                    <Calendar />
+                    <div className="dashView">
+                        <h1>
+                            Welcome to Bestboard
+                        </h1>
+                        <Calendar />
+                    </div>
                 </div>
             </div>
         )
