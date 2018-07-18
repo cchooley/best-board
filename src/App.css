@@ -83,7 +83,6 @@ footer {
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  border-right: .5vh #373737 solid;
   width: 15vw;
   padding: 2.5vh;
   background: #DCD0C0;
@@ -117,11 +116,18 @@ h5 {
 .dashView {
   display: flex;
   flex-flow: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 
-.calendar {
-  border: .5vh #373737 solid;
+.calendar, .sideNav {
+  border-left: .5vh #373737 solid;
+  border-right: .5vh #373737 solid;
   padding: 1.5vh
+}
+
+.messages {
+  border-left: .5vh #373737 solid;
 }
 
 /*

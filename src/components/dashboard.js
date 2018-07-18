@@ -5,18 +5,21 @@ import Nav from './nav'
 import Edit from './editProfile'
 import Delete from './deleteProfile'
 import Calendar from './calendar'
+import Messages from './messages'
 
 export default class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
             edited: false,
-            deleted: false
+            deleted: false,
         }
+
     }
 
     componentDidMount() {
-        if (!window.localStorage.token) { 
+        const token = window.localStorage.token
+        if (!token) { 
             window.location.href = '/'
         }
     }
@@ -27,30 +30,31 @@ export default class Dashboard extends Component {
         if(profile.length) {
             profile = profile[0]
         }
-
         return (
             <div>              
-                <Nav logOut={this.props.logOut} />
+                <Nav    loggedIn={this.props.loggedIn}
+                        logOut={this.props.logOut} />
                 <div className="mainDash">
-                    <div className="sideNav">
-                        <h3>Hello, {profile.name}!</h3>
-                        <img src={profile.image} className='avatar' size='medium' />
-                        <h5>{profile.role}</h5>
-                        <h5>{profile.organization}</h5>
-                        <h5>{profile.email}</h5>
-                        <div className="udContainer">
-                            <Edit   handleEdit={this.props.handleEdit} 
-                                    userId={this.props.userId} 
+                    <div className="dashView">
+                        <div className="sideNav">
+                            <h3>Hello, {profile.name}!</h3>
+                            <img src={profile.image} className='avatar' size='medium' />
+                            <h5>{profile.role}</h5>
+                            <h5>{profile.organization}</h5>
+                            <h5>{profile.email}</h5>
+                            <div className="udContainer">
+                                <Edit handleEdit={this.props.handleEdit}
+                                    userId={this.props.userId}
                                     handleDelete={this.props.handleDelete}
                                     logOut={this.props.logOut} />
-                            <Delete handleDelete={this.props.handleDelete} 
-                            userId={this.props.userId} />
+                                <Delete handleDelete={this.props.handleDelete}
+                                    userId={this.props.userId} />
+                            </div>
                         </div>
-                    </div>
-                    <div className="dashView">
                         <h1>
                             Welcome to Bestboard
                         </h1>
+                        <Messages />
                         <Calendar />
                     </div>
                 </div>

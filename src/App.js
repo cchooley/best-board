@@ -3,8 +3,6 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 
-
-import Nav from './components/nav'
 import Landing from './components/landing'
 import Footer from './components/footer'
 import Dashboard from './components/dashboard'
@@ -18,7 +16,8 @@ class App extends Component {
     super(props)
     this.state = {
       userId: '',
-      userData: []
+      userData: [],
+      loggedIn: false
     }
   }
 
@@ -42,9 +41,14 @@ class App extends Component {
         })
   }
   
+  logIn = () => {
+    this.setState({loggedIn: true})
+  }
+
   logOut = () => {
+    this.setState({loggedIn: false})
     delete window.localStorage.token
-    window.location.href = '/'
+    delete window.localStorage.userId
   }
 
   handleLogin = (event) => {
@@ -62,8 +66,10 @@ class App extends Component {
       .then(response => response.json())
       .then(result => {
         if (result.token) {
+          this.setState({loggedIn: true})
           window.localStorage.token = result.token
           let decode = jwtDecode(result.token)
+          window.localStorage.userId = decode.userId
           this.updateUserID(decode.userId)
         } else {
           alert(result.error)
@@ -89,8 +95,10 @@ class App extends Component {
       .then(response => response.json())
       .then(result => {
         if (result.token) {
+          this.setState({ loggedIn: true })
           window.localStorage.token = result.token
           let decode = jwtDecode(result.token)
+          window.localStorage.userId = decode.userId
           this.updateUserID(decode.userId)
         } else {
           alert("This didn't work because:" + result.error)
@@ -100,9 +108,10 @@ class App extends Component {
 
   handleEdit = (event, id) => {
     event.preventDefault()
+    id = window.localStorage.userId
     const editURL = `${usersURL}/${id}`
     const formData = new FormData(event.target)
-    console.log(event.target)
+    console.log(editURL)
     const body = JSON.stringify({
       name: formData.get("name"),
       email: formData.get("email"),
@@ -116,20 +125,22 @@ class App extends Component {
       headers: new Headers({ "content-type": "application/json" }),
       body: body
     })
-//    .then(window.location.reload())
+    .then({ "message": "success" })
+
   }
 
   handleDelete = (event, id) => {
     event.preventDefault()
+    id = window.localStorage.userId
     const deleteURL = `${usersURL}/${id}`
     console.log(deleteURL)
     fetch(deleteURL, {
       method: "DELETE",
       headers: new Headers({ "content-type": "application/json" })
     })
-      .then({ "message": "deleted" })
-//      .then(delete window.localStorage.token)
-//      .then(window.location.reload())
+      .then(delete window.localStorage.token)
+      .then(delete window.localStorage.userId)
+      .then(this.setState({loggedIn: false}))
   }
 
 
@@ -138,15 +149,19 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
+          
             <Switch>
               <Route exact path='/' component={() => 
                 <Landing  
+                  loggedIn={this.state.loggedIn}
                   updateUserID={this.updateUserID} 
                   handleRegister={this.handleRegister}
                   handleLogin={this.handleLogin} />} />
               <Route exact path='/dashboard' component={() =>
                 <Dashboard 
+                  loggedIn={this.state.loggedIn}
                   userData={this.state.userData}
+                  edited={this.state.edited}
                   updateUserID={this.updateUserID} 
                   handleEdit={this.handleEdit}
                   handleDelete={this.handleDelete}

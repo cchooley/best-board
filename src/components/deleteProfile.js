@@ -6,7 +6,7 @@ const Delete = (props) => {
         <Modal trigger={<button className="ui red basic button" role="button">Delete</button>}>
             <Modal.Header>Are you sure you want to delete your profile?</Modal.Header>
                 <Modal.Description>
-                    <Form onSubmit={(event) => props.handleDelete(event, props.userId)}>
+                    <Form onSubmit={(event) => props.handleDelete(event, window.localStorage.userId)}>
                         <Button type="submit">I'm sure.</Button>
                     </Form>
                 </Modal.Description>

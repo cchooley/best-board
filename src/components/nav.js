@@ -13,26 +13,20 @@ export default class Nav extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn: false
+            token: window.localStorage.token
         }
     }
-
     render() {
-        if (this.state.loggedIn === true) {
-            return (
-            <div>
-                <Redirect to='/dashboard' />
-            </div>
-            )
-    }
 
+    const token = window.localStorage.token    
+    
     return (
         <header>
             <div className="header">
                 <div>
                     <h1 className="title"><span className="gold">B</span>est<span className="gold">B</span>oard</h1>
                 </div>
-                { (window.localStorage.token) 
+                { (token) 
                     ? <div className="logins">
                         <button className="ui blue basic inverted button" onClick={this.props.logOut}>Log Out</button>
                     </div>

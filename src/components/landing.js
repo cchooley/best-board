@@ -11,22 +11,20 @@ const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
 
 export default class Landing extends Component {
 
-
-    render () {
+    componentDidMount() {
         const token = window.localStorage.token
         if (token) {
-            return (
-                <div>
-                    <Redirect to='/dashboard' />
-                </div>
-            )
+            window.location.href = '/dashboard'
         }
+    }
+
+    render () {
 
         return (
             <div>
-                <Nav    updateUserID={this.props.updateUserID}
-                        handleRegister={this.props.handleRegister}
-                        handleLogin={this.props.handleLogin}/>
+                <Nav    handleLogin={this.props.handleLogin}
+                        updateUserID={this.props.updateUserID}
+                        loggedIn={this.props.loggedIn}/>
                 <div className="mainLand">
                     <div className="innerLand">
                         <h2 className="big gold">Get in motion.</h2>

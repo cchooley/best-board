@@ -9,7 +9,7 @@ const Edit = (props) => {
             <Modal.Header>Update your profile.</Modal.Header>
             <Modal.Content image>
                 <Modal.Description>
-                    <Form onSubmit={(event) => props.handleEdit(event, props.userId)}>
+                    <Form onSubmit={(event) => props.handleEdit(event, window.localStorage.userId)}>
                         <Form.Field>
                             <label>Name</label>
                             <input name='name'
