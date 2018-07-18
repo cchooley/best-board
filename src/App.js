@@ -66,15 +66,14 @@ class App extends Component {
       .then(response => response.json())
       .then(result => {
         if (result.token) {
-          this.setState({loggedIn: true})
-          window.localStorage.token = result.token
           let decode = jwtDecode(result.token)
           window.localStorage.userId = decode.userId
           this.updateUserID(decode.userId)
+          window.localStorage.token = result.token
         } else {
           alert(result.error)
         }
-      })
+      }).then(this.logIn())
   }
 
   handleRegister = (event) => {
@@ -95,7 +94,6 @@ class App extends Component {
       .then(response => response.json())
       .then(result => {
         if (result.token) {
-          this.setState({ loggedIn: true })
           window.localStorage.token = result.token
           let decode = jwtDecode(result.token)
           window.localStorage.userId = decode.userId
@@ -156,7 +154,8 @@ class App extends Component {
                   loggedIn={this.state.loggedIn}
                   updateUserID={this.updateUserID} 
                   handleRegister={this.handleRegister}
-                  handleLogin={this.handleLogin} />} />
+                  handleLogin={this.handleLogin}
+                  userId={this.state.userId} />} />
               <Route exact path='/dashboard' component={() =>
                 <Dashboard 
                   loggedIn={this.state.loggedIn}

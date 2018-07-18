@@ -1,9 +1,10 @@
 import React from 'react'
-import { Feed, Icon } from 'semantic-ui-react'
+import { Feed, Icon, Divider } from 'semantic-ui-react'
 
 const Messages = () => (
     <div className="messages">
         <Feed>
+            <Divider horizontal>Recent Activity</Divider>
             <Feed.Event>
                 <Feed.Label>
                     <img src='/images/avatar/small/elliot.jpg' />

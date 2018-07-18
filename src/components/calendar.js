@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Calendar from "react-big-calendar";
+import { Divider } from 'semantic-ui-react'
 import moment from "moment";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -10,10 +11,21 @@ class App extends Component {
     state = {
         events: [
             {
-                start: new Date(),
-                end: new Date(moment().add(1, "days")),
-                title: "Some title"
+                start: new Date(moment().add(5, "days")),
+                end: new Date(moment().add(9, "days")),
+                title: "Fundraiser Week"
+            },
+            {
+                start: new Date(moment().add(11, "days")),
+                end: new Date(moment().add(11, "days")),
+                title: "Board Meeting"
+            },
+            {
+                start: new Date(moment().add(13, "days")),
+                end: new Date(moment().add(13, "days")),
+                title: "B-O-D Happy Hour"
             }
+
         ]
     };
 
@@ -21,7 +33,7 @@ class App extends Component {
         return (
             <div className="calendar">
                 <header className="App-header">
-                    <h1 className="App-title">Board Calendar</h1>
+                    <Divider horizontal>Calendar</Divider>
                 </header>
                 <Calendar
                     defaultDate={new Date()}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Form } from 'semantic-ui-react'
+import { Divider, Button, Modal, Form } from 'semantic-ui-react'
 
 import Nav from './nav'
 import Edit from './editProfile'
@@ -25,20 +25,22 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        let profile = this.props.userData
-        profile.filter(profile => profile.id == this.props.userId)
-        if(profile.length) {
-            profile = profile[0]
+        let profile = this.props.userData.filter(profile => profile.id == window.localStorage.userId)[0]
+        if (!profile) {
+            return null
         }
+
         return (
             <div>              
-                <Nav    loggedIn={this.props.loggedIn}
+                <Nav    userId={this.props.userId}
+                        loggedIn={this.props.loggedIn}
                         logOut={this.props.logOut} />
                 <div className="mainDash">
                     <div className="dashView">
                         <div className="sideNav">
-                            <h3>Hello, {profile.name}!</h3>
+                            <Divider horizontal>Profile</Divider>
                             <img src={profile.image} className='avatar' size='medium' />
+                            <h4>{profile.name}</h4>
                             <h5>{profile.role}</h5>
                             <h5>{profile.organization}</h5>
                             <h5>{profile.email}</h5>
@@ -51,9 +53,16 @@ export default class Dashboard extends Component {
                                     userId={this.props.userId} />
                             </div>
                         </div>
-                        <h1>
-                            Welcome to Bestboard
-                        </h1>
+                        <div className="tasks">
+                            <Divider horizontal>
+                                Action Items
+                            </Divider>
+                            <ul>
+                                <li>Do this</li>
+                                <li>Do this</li>
+                                <li>Do this</li>
+                            </ul>
+                        </div>
                         <Messages />
                         <Calendar />
                     </div>

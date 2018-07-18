@@ -5,10 +5,6 @@ import Register from './register'
 import Login from './login'
 import Nav from './nav'
 
-
-const loginURL = 'https://bestboard-db.herokuapp.com/auth/login'
-const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
-
 export default class Landing extends Component {
 
     componentDidMount() {
@@ -22,7 +18,8 @@ export default class Landing extends Component {
 
         return (
             <div>
-                <Nav    handleLogin={this.props.handleLogin}
+                <Nav    userId={this.props.userId}
+                        handleLogin={this.props.handleLogin}
                         updateUserID={this.props.updateUserID}
                         loggedIn={this.props.loggedIn}/>
                 <div className="mainLand">

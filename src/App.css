@@ -80,11 +80,10 @@ footer {
 
 .sideNav {
   display: flex;
+  width: 100vmax;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  width: 15vw;
-  padding: 2.5vh;
   background: #DCD0C0;
 }
 
@@ -120,14 +119,19 @@ h5 {
   align-items: flex-start;
 }
 
-.calendar, .sideNav {
+.calendar, .tasks {
   border-left: .5vh #373737 solid;
-  border-right: .5vh #373737 solid;
-  padding: 1.5vh
+  padding: 1.5vh;
 }
 
-.messages {
+.calendar {
+  width: 200vmax;
+}
+
+.sideNav, .messages {
   border-left: .5vh #373737 solid;
+  background: #DCD0C0;
+  padding: 1.5vh;
 }
 
 /*
