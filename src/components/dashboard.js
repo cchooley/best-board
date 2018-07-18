@@ -4,6 +4,7 @@ import { Button, Modal, Form } from 'semantic-ui-react'
 import Nav from './nav'
 import Edit from './editProfile'
 import Delete from './deleteProfile'
+import Calendar from './calendar'
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -39,12 +40,12 @@ export default class Dashboard extends Component {
                         <h5>{profile.email}</h5>
                         <div className="udContainer">
                             <Edit   handleEdit={this.props.handleEdit} 
-                                    userId={this.props.userId} />
-                            <Delete handleDelete={this.props.handleDelete}
                                     userId={this.props.userId} 
+                                    handleDelete={this.props.handleDelete}
                                     logOut={this.props.logOut} />
                         </div>
                     </div>
+                    <Calendar />
                 </div>
             </div>
         )

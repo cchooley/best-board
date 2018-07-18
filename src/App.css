@@ -77,6 +77,7 @@ footer {
   to { transform: rotate(360deg); }
 }
 
+
 .sideNav {
   display: flex;
   flex-flow: column;
@@ -111,6 +112,11 @@ h5 {
   flex-flow: row;
   margin: .5vh;
   padding: .5vh;
+}
+
+.calendar {
+  border: .5vh #373737 solid;
+  padding: 1.5vh
 }
 
 /*

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Modal, Form } from 'semantic-ui-react'
 
+import Delete from './deleteProfile'
+
 const Edit = (props) => {
     return (
         <Modal trigger={<button className="ui black basic inverted button" role="button">Edit</button>}>
@@ -34,6 +36,7 @@ const Edit = (props) => {
                                 value={props.role} />
                         </Form.Field>
                         <Button type="submit">Submit</Button>
+                        <Delete />
                     </Form>
                 </Modal.Description>
             </Modal.Content>
