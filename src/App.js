@@ -10,6 +10,7 @@ import Dashboard from './components/dashboard'
 const loginURL = 'https://bestboard-db.herokuapp.com/auth/login'
 const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
 const usersURL = 'https://bestboard-db.herokuapp.com/users'
+const votesURL = 'https://bestboard-db.herokuapp.com/votes'
 
 class App extends Component {
   constructor(props) {
@@ -17,12 +18,14 @@ class App extends Component {
     this.state = {
       userId: '',
       userData: [],
-      loggedIn: false
+      loggedIn: false,
+      voteData: []
     }
   }
 
   componentDidMount() {
     this.getUsers()
+    this.getVotes()
   }
 
   updateUserID = (userId) => {
@@ -41,6 +44,16 @@ class App extends Component {
         })
   }
   
+  getVotes() {
+    fetch(votesURL)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          voteData: data.votes
+        })
+      })
+  }
+
   logIn = () => {
     this.setState({loggedIn: true})
   }
@@ -84,7 +97,8 @@ class App extends Component {
       email: formData.get("email"),
       organization: formData.get("organization"),
       role: formData.get("role"),
-      password: formData.get("password")
+      password: formData.get("password"),
+      committees: formData.get('committees')
     })
     fetch(registerURL, {
       method: "POST",
