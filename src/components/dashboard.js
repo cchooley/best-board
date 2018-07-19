@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Divider, Button, Modal, Form } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 
 import Nav from './nav'
 import Edit from './editProfile'
@@ -18,14 +19,15 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount() {
-        const token = window.localStorage.token
-        if (!token) { 
-            window.location.href = '/'
+            const token = window.localStorage.token
+            if (!token) {
+                window.location.href = '/'
+            }
         }
-    }
 
     render() {
-        let profile = this.props.userData.filter(profile => profile.id == window.localStorage.userId)[0]
+        let profile = this.props.userData
+            .filter(profile => profile.id == window.localStorage.userId)[0]
         if (!profile) {
             return null
         }

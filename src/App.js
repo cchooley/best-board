@@ -67,13 +67,13 @@ class App extends Component {
       .then(result => {
         if (result.token) {
           let decode = jwtDecode(result.token)
-          window.localStorage.userId = decode.userId
           this.updateUserID(decode.userId)
           window.localStorage.token = result.token
+          window.localStorage.userId = decode.userId
         } else {
           alert(result.error)
         }
-      }).then(this.logIn())
+      })
   }
 
   handleRegister = (event) => {
@@ -123,7 +123,7 @@ class App extends Component {
       headers: new Headers({ "content-type": "application/json" }),
       body: body
     })
-    .then({ "message": "success" })
+    .then(this.setState ({ edited: true }))
 
   }
 
@@ -138,7 +138,7 @@ class App extends Component {
     })
       .then(delete window.localStorage.token)
       .then(delete window.localStorage.userId)
-      .then(this.setState({loggedIn: false}))
+      .then(this.setState({ deleted: true }))
   }
 
 
