@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Divider, Button, Modal, Form } from 'semantic-ui-react'
+import { Divider, Menu, Dropdown, Button, Modal, Form } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 import Nav from './nav'
+import ProfileMenu from './profileMenu'
 import Edit from './editProfile'
 import Delete from './deleteProfile'
+
 import Calendar from './calendar'
 import Messages from './messages'
 
@@ -47,12 +49,27 @@ export default class Dashboard extends Component {
                             <h5>{profile.organization}</h5>
                             <h5>{profile.email}</h5>
                             <div className="udContainer">
-                                <Edit handleEdit={this.props.handleEdit}
-                                    userId={this.props.userId}
-                                    handleDelete={this.props.handleDelete}
-                                    logOut={this.props.logOut} />
-                                <Delete handleDelete={this.props.handleDelete}
-                                    userId={this.props.userId} />
+                                <Menu vertical>
+                                    <Dropdown item text='Categories'>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item>
+                                                <Edit   handleEdit={this.props.handleEdit}
+                                                        userId={this.props.userId}
+                                                        logOut={this.props.logOut} />
+                                            </Dropdown.Item>
+                                            <Dropdown.Item>
+                                                <Delete handleDelete={this.props.handleDelete}
+                                                        userId={this.props.userId}
+                                                        logOut={this.props.logOut} />
+                                            </Dropdown.Item>
+                                            <Dropdown.Item><ProfileMenu /></Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Menu>
+                                {/* <ProfileMenu    handleEdit={this.props.handleEdit}
+                                                userId={this.props.userId}
+                                                handleDelete={this.props.handleDelete}
+                                                logOut={this.props.logOut} /> */}
                             </div>
                         </div>
                         <div className="tasks">
