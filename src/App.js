@@ -83,6 +83,7 @@ class App extends Component {
           this.updateUserID(decode.userId)
           window.localStorage.token = result.token
           window.localStorage.userId = decode.userId
+          this.setState({ loggedIn: true })
         } else {
           alert(result.error)
         }
@@ -112,6 +113,7 @@ class App extends Component {
           let decode = jwtDecode(result.token)
           window.localStorage.userId = decode.userId
           this.updateUserID(decode.userId)
+          this.setState({ loggedIn: true })
         } else {
           alert("This didn't work because:" + result.error)
         }
@@ -155,6 +157,23 @@ class App extends Component {
       .then(this.setState({ deleted: true }))
   }
 
+  yesVote = (event, id) => {
+    event.preventDefault()
+    id = this.state.voteData[0].id
+    const yesURL = `${votesURL}/${id}`
+    const body = JSON.stringify({
+      vote1: this.state.voteData[0].yesVote ++,
+      votedYes: this.props.user.name
+    })
+    console.log(body)
+    // fetch(yesURL, {
+    //   method: "PUT",
+    //   headers: new Headers({ "content-type": "application/json" }),
+    //   body: body
+    // })
+    // .then(this.setState ({ edited: true }))
+  }
+  
 
   render() {
     
@@ -174,13 +193,16 @@ class App extends Component {
                 <Dashboard 
                   loggedIn={this.state.loggedIn}
                   userData={this.state.userData}
+                  voteData={this.state.voteData} 
                   edited={this.state.edited}
                   updateUserID={this.updateUserID} 
                   handleEdit={this.handleEdit}
                   handleDelete={this.handleDelete}
                   logOut={this.logOut}
                   getUsers={this.getUsers}  
-                  userId={this.state.userId}/>} />
+                  getVotes={this.getVotes} 
+                  userId={this.state.userId}
+                  yesVote={this.yesVote} />} />
             </Switch>
           <Footer />
         </div>

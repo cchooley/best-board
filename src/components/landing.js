@@ -6,10 +6,19 @@ import Login from './login'
 import Nav from './nav'
 
 export default class Landing extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loggedIn: false
+        }
+    }
 
     componentDidMount() {
-        const token = window.localStorage.token
-        if (token) {
+        // const token = window.localStorage
+        // if (token) {
+        //     window.location.href = '/dashboard'
+        // }
+        if (this.props.loggedIn) {
             window.location.href = '/dashboard'
         }
     }

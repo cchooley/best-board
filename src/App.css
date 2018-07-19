@@ -100,8 +100,9 @@ h5 {
 }
 
 .avatar {
-  height: 10vh;
+  height: 20vh;
   width: 10vw;
+  border-radius: 1vh;
   margin: 1vh;
 }
 

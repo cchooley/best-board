@@ -6,6 +6,7 @@ import Nav from './nav'
 import ProfileMenu from './profileMenu'
 import Edit from './editProfile'
 import Delete from './deleteProfile'
+import Vote from './vote'
 
 import Calendar from './calendar'
 import Messages from './messages'
@@ -16,6 +17,8 @@ export default class Dashboard extends Component {
         this.state = {
             edited: false,
             deleted: false,
+            user: this.props.userData
+                .filter(profile => profile.id == window.localStorage.userId)[0]
         }
 
     }
@@ -28,8 +31,7 @@ export default class Dashboard extends Component {
         }
 
     render() {
-        let profile = this.props.userData
-            .filter(profile => profile.id == window.localStorage.userId)[0]
+        let profile = this.state.user
         if (!profile) {
             return null
         }
@@ -72,15 +74,26 @@ export default class Dashboard extends Component {
                                                 logOut={this.props.logOut} /> */}
                             </div>
                         </div>
-                        <div className="tasks">
-                            <Divider horizontal>
-                                Action Items
-                            </Divider>
-                            <ul>
-                                <li>Do this</li>
-                                <li>Do this</li>
-                                <li>Do this</li>
-                            </ul>
+                        <div className="innerLeft">
+                            <div className="tasks">
+                                <Divider horizontal>
+                                    Action Items
+                                </Divider>
+                                <ul>
+                                    <li>Do this</li>
+                                    <li>Do this</li>
+                                    <li>Do this</li>
+                                </ul>
+                            </div>
+                            <div className="votes">
+                                <Divider horizontal>
+                                    Open Polls
+                                </Divider>
+                                    <Vote   user={this.state.user}
+                                            yesVote={this.props.yesVote}
+                                            voteData={this.props.voteData} 
+                                            getVotes={this.props.getVotes} />
+                            </div>
                         </div>
                         <Messages />
                         <Calendar />

@@ -10,16 +10,8 @@ const loginURL = 'https://bestboard-db.herokuapp.com/auth/login'
 const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
 
 export default class Nav extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            token: window.localStorage.token
-        }
-    }
     render() {
-
-    const token = window.localStorage.token    
-    
+        const token = window.localStorage.token
     return (
         <header>
             <div className="header">
