@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Modal, Divider, Form } from 'semantic-ui-react'
+import { Button, Modal, Divider } from 'semantic-ui-react'
 import { Bar } from 'react-chartjs-2';
-
-import Edit from './editProfile'
-import Delete from './deleteProfile'
-
-
-
-
 
 export default class Vote extends Component {
     constructor(props) {
@@ -74,6 +67,16 @@ export default class Vote extends Component {
             .then(this.setState({ voted: true }))
     }
 
+    alreadyVoted = (user) => {
+        user = this.props.user.name
+        console.log(user)
+        let history = this.props.voteData[0].votedYes.concat(this.props.voteData[0].votedNo, this.props.voteData[0].votedAb)
+        for (var i = 0; i <= history.length; i++) {
+            if (history[i] == user) {
+                this.state.voted = true
+            }
+        }
+    }
 
     render() {
         let vote = this.props.voteData[0]
@@ -85,6 +88,8 @@ export default class Vote extends Component {
         let yesVotes = vote.votedYes.length
         let noVotes = vote.votedNo.length
         let abVotes = vote.votedAb.length
+
+        this.alreadyVoted()
 
         const data = {
             labels: ['Yes', 'No', 'Abstain'],
