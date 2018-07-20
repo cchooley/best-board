@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Divider, Menu, Dropdown, Button, Modal, Form } from 'semantic-ui-react'
 
-import Edit from './editProfile'
+import Admin from './editProfile'
 import Delete from './deleteProfile'
 import ProfileMenu from './profileMenu'
 
@@ -27,38 +27,48 @@ export default class User extends Component {
         return (
             <div className="sideNav">
                 <Divider horizontal>Profile</Divider>
-                <img src={profile.image} className='avatar' size='medium' />
-                <h4>{profile.name}</h4>
-                <h5>{profile.role}</h5>
-                <h5>{profile.organization}</h5>
-                <h5>{profile.email}</h5>
-                <div className="udContainer">
+                <div className="userProfile">
+                    <img src={profile.image} className='avatar' size='medium' />
+                    <div className="stats">
+                        <span>{profile.name}</span>
+                        <span>{profile.role}</span>
+                        <span>{profile.organization}</span>
+                        <span>{profile.email}</span>
+                    </div>
+                </div>
+                <div className="menuContainer">
                     <Menu vertical>
                         <Dropdown item text='Categories'>
-                            <Dropdown.Menu>
-                                {
-                                    (this.props.user.role == "Admin")
-                                    ? <Dropdown.Item>
-                                        <Edit handleEdit={this.props.handleEdit}
-                                            userId={this.props.userId}
-                                            logOut={this.props.logOut} />
-                                    </Dropdown.Item>
-                                    : <Dropdown.Item>
-                                        <ProfileMenu />
-                                    </Dropdown.Item>
-                                }
-                                <Dropdown.Item>
-                                    <Delete handleDelete={this.props.handleDelete}
-                                        userId={this.props.userId}
-                                        logOut={this.props.logOut} />
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
+                            {
+                                (this.props.user.role == "Admin")
+                                    ? <Dropdown.Menu>
+                                        <Dropdown.Item>
+                                            <Admin handleEdit={this.props.handleEdit}
+                                                userId={this.props.userId}
+                                                logOut={this.props.logOut} />
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <ProfileMenu profile={this.props.user} />
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <Delete handleDelete={this.props.handleDelete}
+                                                userId={this.props.userId}
+                                                logOut={this.props.logOut} />
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                    : <Dropdown.Menu>
+                                        <Dropdown.Item>
+                                            <ProfileMenu profile={this.props.user} />
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <Delete handleDelete={this.props.handleDelete}
+                                                userId={this.props.userId}
+                                                logOut={this.props.logOut} />
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                            }
                         </Dropdown>
                     </Menu>
-                    {/* <ProfileMenu    handleEdit={this.props.handleEdit}
-                                                userId={this.props.userId}
-                                                handleDelete={this.props.handleDelete}
-                                                logOut={this.props.logOut} /> */}
                 </div>
             </div>
         )

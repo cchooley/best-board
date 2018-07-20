@@ -56,37 +56,6 @@ footer {
   padding: 1vh;
 }
 
-.gold {
-  color: #C0B283;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-
-.big {
-  font-size: xx-large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
-.sideNav {
-  display: flex;
-  width: 100vmax;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  background: #DCD0C0;
-}
-
 a {
   color: #373737;
 }
@@ -95,46 +64,104 @@ a:hover {
   color: #F4F4F4;
 }
 
-h5 {
-  margin: .1vh;
-}
-
-.avatar {
-  height: 20vh;
-  width: 10vw;
-  border-radius: 1vh;
-  margin: 1vh;
-}
-
-.udContainer {
-  display: flex;
-  flex-flow: row;
-  margin: .5vh;
-  padding: .5vh;
-}
-
-.dashView {
+.mainDash {
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
   align-items: flex-start;
 }
 
-.calendar, .tasks {
-  border-left: .5vh #373737 solid;
-  padding: 1.5vh;
+.left {
+  display: flex;
+  flex-flow: column;
+}
+
+.upperLeft {
+  display: flex;
+  flex-flow: row;
+}
+
+.sideNav {
+  background: rgb(192, 178, 131, .3);
+  border: .2vh black solid;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: .1vw;
+  padding: .2vw .5vw;
+}
+
+.sideNav:hover {
+  background: rgb(192, 178, 131, .6);
+}
+
+.userProfile {
+  display: flex;
+  flex-flow: row;
+}
+
+.stats {
+  margin: 2vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.avatar {
+  height: 20vh;
+  width: 10vw;
+  border-radius: 1vh;
+  margin: 2vh;
+}
+
+span {
+  font-weight: 700
+}
+
+.menuContainer {
+  display: flex;
+  flex-flow: row;
+  padding: 2vh;
+}
+
+.items {
+  background: rgb(220, 208, 192, .3);
+  border: .2vh black solid;
+  margin: .1vw;
+  padding: .2vw .5vw;
+}
+
+.items:hover {
+  background: rgb(220, 208, 192, .8);
+}
+
+.messages {
+  background: rgb(55, 55, 55, .2);
+  border: .2vh black solid;
+  margin: .1vw;
+  padding: .2vw .5vw;
+}
+
+.messages:hover {
+  background: rgb(55, 55, 55, .5);
 }
 
 .calendar {
-  width: 200vmax;
+  background: rgb(244, 244, 244, .2);
+  border: .2vh black solid;
+  margin: .1vw;
+  padding: .2vw .5vw;
 }
 
-.sideNav, .messages {
-  border-left: .5vh #373737 solid;
-  background: #DCD0C0;
-  padding: 1.5vh;
+.calendar:hover {
+  background: rgb(244, 244, 244, 1);
 }
 
+.gold {
+  color: rgb(192, 178, 131);
+}
 /*
 * {
   color: rgb(192, 178, 131);

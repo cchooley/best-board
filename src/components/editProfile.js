@@ -3,13 +3,13 @@ import { Button, Modal, Form } from 'semantic-ui-react'
 
 import Delete from './deleteProfile'
 
-const Edit = (props) => {
+const Admin = (props) => {
     return (
-        <Modal trigger={<span>Edit</span>}>
+        <Modal trigger={<span>Admin</span>}>
             <Modal.Header>Update your profile.</Modal.Header>
             <Modal.Content image>
                 <Modal.Description>
-                    <Form onSubmit={(event) => props.handleEdit(event, window.localStorage.userId)}>
+                    <Form onSubmit={(event) => props.handleAdmin(event, window.localStorage.userId)}>
                         <Form.Field>
                             <label>Name</label>
                             <input name='name' />
@@ -38,4 +38,4 @@ const Edit = (props) => {
     )
 }
 
-export default Edit;
+export default Admin;

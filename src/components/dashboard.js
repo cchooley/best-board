@@ -37,34 +37,37 @@ export default class Dashboard extends Component {
                         loggedIn={this.props.loggedIn}
                         logOut={this.props.logOut} />
                 <div className="mainDash">
-                    <div className="dashView">
-                    <User   user={this.state.user} 
-                            handleEdit={this.props.handleEdit}
-                            handleDelete={this.props.handleDelete} />
-                        <div className="innerLeft">
-                            <div className="tasks">
-                                <Divider horizontal>
-                                    Action Items
-                                </Divider>
-                                <ul>
-                                    <li>Do this</li>
-                                    <li>Do this</li>
-                                    <li>Do this</li>
-                                </ul>
-                            </div>
-                            <div className="votes">
-                                <Divider horizontal>
-                                    Open Polls
-                                </Divider>
-                                    <Vote   user={this.state.user}
-                                            yesVote={this.props.yesVote}
-                                            voteData={this.props.voteData} 
-                                            getVotes={this.props.getVotes} />
+                    <div className="left">
+                        <div className="upperLeft">
+                            <User 
+                                user={this.state.user}
+                                handleEdit={this.props.handleEdit}
+                                handleDelete={this.props.handleDelete} />
+                            <div className="items">
+                                <div className="tasks">
+                                    <Divider horizontal>
+                                        Action Items
+                                    </Divider>
+                                    <ul>
+                                        <li>Do this</li>
+                                        <li>Do this</li>
+                                        <li>Do this</li>
+                                    </ul>
+                                </div>
+                                <div className="votes">
+                                    <Divider horizontal>
+                                        Open Polls
+                                    </Divider>
+                                        <Vote   user={this.state.user}
+                                                yesVote={this.props.yesVote}
+                                                voteData={this.props.voteData} 
+                                                getVotes={this.props.getVotes} />
+                                </div>
                             </div>
                         </div>
                         <Messages />
-                        <Calendar />
                     </div>
+                    <Calendar />
                 </div>
             </div>
         )
