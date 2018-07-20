@@ -136,10 +136,10 @@ h5 {
 }
 
 /*
-
-gold: COB283
-silk: DCD0C0
-paper: F4F4F4
-dark-grey: 373737
-
+* {
+  color: rgb(192, 178, 131);
+  color: #DCD0C0;
+  color: #F4F4F4;
+  color: rgb(55, 55, 55);
+}
 */

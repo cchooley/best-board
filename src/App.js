@@ -125,7 +125,6 @@ class App extends Component {
     id = window.localStorage.userId
     const editURL = `${usersURL}/${id}`
     const formData = new FormData(event.target)
-    console.log(editURL)
     const body = JSON.stringify({
       name: formData.get("name"),
       email: formData.get("email"),
@@ -133,7 +132,6 @@ class App extends Component {
       organization: formData.get("organization"),
       role: formData.get("role"),
     })
-    console.log(body)
     fetch(editURL, {
       method: "PUT",
       headers: new Headers({ "content-type": "application/json" }),
@@ -147,7 +145,6 @@ class App extends Component {
     event.preventDefault()
     id = window.localStorage.userId
     const deleteURL = `${usersURL}/${id}`
-    console.log(deleteURL)
     fetch(deleteURL, {
       method: "DELETE",
       headers: new Headers({ "content-type": "application/json" })
@@ -156,24 +153,6 @@ class App extends Component {
       .then(delete window.localStorage.userId)
       .then(this.setState({ deleted: true }))
   }
-
-  yesVote = (event, id) => {
-    event.preventDefault()
-    id = this.state.voteData[0].id
-    const yesURL = `${votesURL}/${id}`
-    const body = JSON.stringify({
-      vote1: this.state.voteData[0].yesVote ++,
-      votedYes: this.props.user.name
-    })
-    console.log(body)
-    // fetch(yesURL, {
-    //   method: "PUT",
-    //   headers: new Headers({ "content-type": "application/json" }),
-    //   body: body
-    // })
-    // .then(this.setState ({ edited: true }))
-  }
-  
 
   render() {
     
@@ -201,8 +180,7 @@ class App extends Component {
                   logOut={this.logOut}
                   getUsers={this.getUsers}  
                   getVotes={this.getVotes} 
-                  userId={this.state.userId}
-                  yesVote={this.yesVote} />} />
+                  userId={this.state.userId} />} />
             </Switch>
           <Footer />
         </div>
