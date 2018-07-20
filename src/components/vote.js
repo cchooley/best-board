@@ -135,8 +135,8 @@ export default class Vote extends Component {
                     <div>
                     <h2>Thank you for voting!</h2>
                     <Bar    data={data}
-                            width={100}
-                            height={50} 
+                            width={20}
+                            height={10} 
                             options={options} />
                     <h3>Yes votes: {vote.votedYes.join(', ')}</h3>
                     <h3>No votes: {vote.votedNo.join(', ')}</h3>

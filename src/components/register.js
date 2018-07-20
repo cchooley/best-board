@@ -25,8 +25,7 @@ const Register = (props) => {
                         <Form.Field>
                             <label>Role in Organization</label>
                             <select name='role'>
-                                <option value="" disabled defaultValue>Choose one</option>
-                                <option>Board Member</option>
+                                <option defaultValue>Board Member</option>
                                 <option>Executive Board</option>
                                 <option>Admin</option>
                             </select>
@@ -34,7 +33,7 @@ const Register = (props) => {
                         <Form.Field>
                             <label>Committees Serving On</label>
                             <select name='committees'>
-                                <option value="" disabled defaultValue>Choose any</option>
+                                <option defaultValue>None</option>
                                 <option>Finance</option>
                                 <option>Fundraising</option>
                                 <option>Marketing</option>
