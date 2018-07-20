@@ -109,10 +109,10 @@ class App extends Component {
       .then(response => response.json())
       .then(result => {
         if (result.token) {
-          window.localStorage.token = result.token
           let decode = jwtDecode(result.token)
-          window.localStorage.userId = decode.userId
           this.updateUserID(decode.userId)
+          window.localStorage.token = result.token
+          window.localStorage.userId = decode.userId
           this.setState({ loggedIn: true })
         } else {
           alert("This didn't work because:" + result.error)
