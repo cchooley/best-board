@@ -1,34 +1,30 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
 
 import Register from './register'
 import Login from './login'
-
-
-
-const loginURL = 'https://bestboard-db.herokuapp.com/auth/login'
-const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
+import User from './user'
 
 export default class Nav extends Component {
     render() {
         const token = window.localStorage.token
     return (
-        <header>
             <div className="header">
                 <div>
                     <h1 className="title"><span className="gold">B</span>est<span className="gold">B</span>oard</h1>
                 </div>
                 { (token) 
-                    ? <div className="logins">
-                        <button className="ui blue basic inverted button" onClick={this.props.logOut}>Log Out</button>
+                    ? <div className="loggedIn">
+                        <User   user={this.props.user}
+                                handleEdit={this.props.handleEdit}
+                                handleDelete={this.props.handleDelete}
+                                logOut={this.props.logOut} />
                     </div>
-                    : <div className="logins">
+                    : <div className="loggedOut">
                         <Register handleRegister={this.props.handleRegister} />
                         <Login handleLogin={this.props.handleLogin} />
                     </div>
                 }
             </div>
-        </header>
     )}
 }
 

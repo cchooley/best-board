@@ -33,7 +33,7 @@ export default class Landing extends Component {
                         loggedIn={this.props.loggedIn}/>
                 <div className="mainLand">
                     <div className="innerLand">
-                        <h2 className="big gold">Get in motion.</h2>
+                        <h1 className="big gold">Get in motion.</h1>
                         <h3>Welcome to <span className="gold">BestBoard</span>, the number one new app for managing productivity in non-profit governance.</h3>
                         <h3>Create your own account or login below.</h3>
                         <div className="landButton">

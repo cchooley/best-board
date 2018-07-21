@@ -3,7 +3,6 @@ import { Divider, Menu, Dropdown, Button, Modal, Form } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
 
 import Nav from './nav'
-import User from './user'
 import Vote from './vote'
 import Calendar from './calendar'
 import Messages from './messages'
@@ -33,16 +32,13 @@ export default class Dashboard extends Component {
 
         return (
             <div>              
-                <Nav    userId={this.props.userId}
+                <Nav    user={this.state.user}
+                        userId={this.props.userId}
                         loggedIn={this.props.loggedIn}
                         logOut={this.props.logOut} />
                 <div className="mainDash">
                     <div className="left">
                         <div className="upperLeft">
-                            <User 
-                                user={this.state.user}
-                                handleEdit={this.props.handleEdit}
-                                handleDelete={this.props.handleDelete} />
                             <div className="items">
                                 <div className="tasks">
                                     <Divider horizontal>

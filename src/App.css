@@ -23,8 +23,14 @@
   border-top: .2vh #C0B283 solid;
 }
 
-.logins {
-  padding: .5vw
+.loggedOut {
+  padding: .5vw;
+  display: flex;
+  flex-flow: row;
+}
+
+.loggedIn {
+  padding: .5vw;
 }
 
 .mainLand {
@@ -36,7 +42,7 @@
   height: auto;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: flex-start
 }
 
 .innerLand {
@@ -81,49 +87,49 @@ a:hover {
   flex-flow: row;
 }
 
-.sideNav {
-  background: rgb(192, 178, 131, .3);
-  border: .2vh black solid;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  margin: .1vw;
-  padding: .2vw .5vw;
-}
-
-.sideNav:hover {
-  background: rgb(192, 178, 131, .6);
-}
-
 .userProfile {
   display: flex;
   flex-flow: row;
-}
-
-.stats {
-  margin: 2vh;
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .avatar {
-  height: 20vh;
-  width: 10vw;
-  border-radius: 1vh;
-  margin: 2vh;
+  height: 8vh;
+  width: 4vw;
+  margin-left: 1vw;
+  border-radius: 1vw;
+}
+
+.ui.menu {
+  align-items: flex-end;
+  background: #373737;
+  border: none;
+  box-shadow: none;
+}
+
+.ui.menu:hover {
+  color: rgb(192, 178, 131)
+}
+
+.ui.dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.item:hover {
+  color: yellow;
+}
+
+.drop {
+  background: #373737;
+  outline: none;
 }
 
 span {
   font-weight: 700
-}
-
-.menuContainer {
-  display: flex;
-  flex-flow: row;
-  padding: 2vh;
 }
 
 .items {

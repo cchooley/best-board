@@ -62,6 +62,7 @@ class App extends Component {
     this.setState({loggedIn: false})
     delete window.localStorage.token
     delete window.localStorage.userId
+    console.log("hello")
   }
 
   handleLogin = (event) => {
