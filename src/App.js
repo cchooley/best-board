@@ -96,6 +96,7 @@ class App extends Component {
     const body = JSON.stringify({
       name: formData.get("name"),
       email: formData.get("email"),
+//      image: (formData.image) ? formData.get("image") : 'https://tinyurl.com/yc7ytv5u',
       organization: formData.get("organization"),
       role: formData.get("role"),
       password: formData.get("password"),

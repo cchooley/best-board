@@ -85,6 +85,9 @@ export default class User extends Component {
                                             userId={this.props.userId}
                                             logOut={this.props.logOut} />
                                     </Dropdown.Item>
+                                    <Dropdown.Item onClick={this.props.logOut}>
+                                        <span>Logout</span>
+                                    </Dropdown.Item>
                                 </Dropdown.Menu>
                         }
                     </Dropdown>

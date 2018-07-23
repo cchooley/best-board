@@ -67,87 +67,103 @@ export default class Vote extends Component {
             .then(this.setState({ voted: true }))
     }
 
-    alreadyVoted = (user) => {
-        user = this.props.user.name
-        let history = this.props.voteData[0].votedYes.concat(this.props.voteData[0].votedNo, this.props.voteData[0].votedAb)
-        for (var i = 0; i <= history.length; i++) {
-            if (history[i] == user) {
-                this.state.voted = true
-            }
-        }
-    }
+    // alreadyVoted = (user) => {
+
+    //     user = this.props.user.name
+    //     let history = this.props.vote.map(vote => {
+    //         return vote.votedYes.concat(vote.votedNo, vote.votedAb)
+    //     }
+    //     )
+
+    //     // for (var i = 0; i <= history.length; i++) {
+    //     //     if (history[i] == user) {
+    //     //         return false
+    //     //     }
+    //     // }
+    // }
 
     render() {
         let voteData = this.props.voteData
-        let voteModals = this.props.voteData.map(vote => {
-            return (
-                <div class="voteContainer">
-                    <Modal trigger={<span>{vote.name}</span>}>
-                        <Modal.Header>Issue #{vote.id}: {vote.name}</Modal.Header>
-                        <Modal.Content>
-                            <h4>Created By: {vote.createdBy}</h4>
-                            <h4>Opened On: {vote.openedOn.slice(0, 10)}</h4>
-                            <h4>Issue: {vote.issue}</h4>
-                            <Divider />
-                            {/* {(!this.state.voted)
-                                ? */}
-                                <Modal.Actions>
-                                    <Button onClick={this.yesVote}>{vote.option1}</Button>
-                                    <Button onClick={this.noVote}>{vote.option2}</Button>
-                                    <Button onClick={this.abVote}>{vote.option3}</Button>
-                                </Modal.Actions>
-                                {/* :
-                                <div>
-                                    <h2>Thank you for voting!</h2>
-                                    <Bar data={data}
-                                        width={20}
-                                        height={10}
-                                        options={options} />
-                                    <h3>Yes votes: {vote.votedYes.join(', ')}</h3>
-                                    <h3>No votes: {vote.votedNo.join(', ')}</h3>
-                                    <h3>Abstained: {vote.votedAb.join(', ')}</h3>
-                                </div>
-                            } */}
-                        </Modal.Content>
-                    </Modal>
-                </div>
-            )
-        })
 
-        if(!voteData) {
+        if (!voteData) {
             return null
         }
 
-        // let yesVotes = voteData.votedYes.length
-        // let noVotes = voteData.votedNo.length
-        // let abVotes = voteData.votedAb.length
+        let voteModals = this.props.voteData.map(vote => {
+            console.log(vote)
+            let hasVoted = false
+            let yesVotes = vote.votedYes
+            let noVotes = vote.votedNo
+            let abVotes = vote.votedAb
 
-        // this.alreadyVoted()
+            let user = this.props.user.name
+            let history = yesVotes.concat(noVotes, abVotes)
 
-        // const data = {
-        //     labels: ['Yes', 'No', 'Abstain'],
-        //     datasets: [
-        //         {
-        //             label: 'Vote Total',
-        //             backgroundColor: 'rgb(192, 178, 131, .3)',
-        //             borderColor: 'rgb(55, 55, 55, .3)',
-        //             borderWidth: 1,
-        //             hoverBackgroundColor: 'rgb(192, 178, 131, 1)',
-        //             hoverBorderColor: 'rgb(55, 55, 55, 1)',
-        //             data: [yesVotes, noVotes, abVotes]
-        //         }
-        //     ]
-        // };
+                for (var i = 0; i <= history.length; i++) {
+                    if (history[i] == user) {
+                        hasVoted = true
+                    }
+                }
+            
 
-        // const options = {
-        //     scales: {
-        //         yAxes: [{
-        //             ticks: {
-        //                 beginAtZero: true
-        //             }
-        //         }]
-        //     }
-        // }
+            const data = {
+                labels: ['Yes', 'No', 'Abstain'],
+                datasets: [
+                    {
+                        label: 'Vote Total',
+                        backgroundColor: 'rgb(192, 178, 131, .3)',
+                        borderColor: 'rgb(55, 55, 55, .3)',
+                        borderWidth: 1,
+                        hoverBackgroundColor: 'rgb(192, 178, 131, 1)',
+                        hoverBorderColor: 'rgb(55, 55, 55, 1)',
+                        data: [yesVotes.length, noVotes.length, abVotes.length]
+                    }
+                ]
+            };
+
+            const options = {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+
+                return (
+                    <div className="voteContainer">
+                        <Modal trigger={<span>{vote.name}</span>}>
+                            <Modal.Header>Issue #{vote.id}: {vote.name}</Modal.Header>
+                            <Modal.Content>
+                                <h4>Created By: {vote.createdBy}</h4>
+                                <h4>Opened On: {vote.openedOn.slice(0, 10)}</h4>
+                                <h4>Issue: {vote.issue}</h4>
+                                <Divider />
+                                {(!hasVoted)
+                                    ?
+                                    <Modal.Actions>
+                                        <Button onClick={this.yesVote}>{vote.option1}</Button>
+                                        <Button onClick={this.noVote}>{vote.option2}</Button>
+                                        <Button onClick={this.abVote}>{vote.option3}</Button>
+                                    </Modal.Actions>
+                                    :
+                                    <div>
+                                        <h2>Thank you for voting!</h2>
+                                        <Bar data={data}
+                                            width={20}
+                                            height={10}
+                                            options={options} />
+                                        <h3>Yes votes: {vote.votedYes.join(', ')}</h3>
+                                        <h3>No votes: {vote.votedNo.join(', ')}</h3>
+                                        <h3>Abstained: {vote.votedAb.join(', ')}</h3>
+                                    </div>
+                                }
+                            </Modal.Content>
+                        </Modal>
+                    </div>
+                )
+            })
 
     return (
 
