@@ -19,7 +19,8 @@ class App extends Component {
       userId: '',
       userData: [],
       loggedIn: false,
-      voteData: []
+      voteData: [],
+      deleted: false
     }
   }
 
@@ -150,9 +151,8 @@ class App extends Component {
       method: "DELETE",
       headers: new Headers({ "content-type": "application/json" })
     })
-      .then(delete window.localStorage.token)
-      .then(delete window.localStorage.userId)
-      .then(this.setState({ deleted: true }))
+    .then(delete window.localStorage.token)
+    .then(this.setState({ deleted: true }))
   }
 
   render() {

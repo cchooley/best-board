@@ -3,9 +3,9 @@ import { Button, Modal, Form } from 'semantic-ui-react'
 
 import Delete from './deleteProfile'
 
-const Admin = (props) => {
+const Edit = (props) => {
     return (
-        <Modal trigger={<span>Admin</span>}>
+        <Modal trigger={<Button>Edit</Button>}>
             <Modal.Header>Update your profile.</Modal.Header>
             <Modal.Content image>
                 <Modal.Description>
@@ -38,4 +38,4 @@ const Admin = (props) => {
     )
 }
 
-export default Admin;
+export default Edit;

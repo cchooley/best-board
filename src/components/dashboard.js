@@ -32,10 +32,12 @@ export default class Dashboard extends Component {
 
         return (
             <div>              
-                <Nav    user={this.state.user}
+                <Nav    userData={this.props.userData}
+                        user={this.state.user}
                         userId={this.props.userId}
                         loggedIn={this.props.loggedIn}
                         logOut={this.props.logOut}
+                        handleDelete={this.props.handleDelete}
                         handlePoll={this.props.handlePoll} />
                 <div className="mainDash">
                     <div className="left">

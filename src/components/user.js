@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Divider, Menu, Dropdown, Button, Modal, Form } from 'semantic-ui-react'
 
-import Admin from './editProfile'
+
 import Delete from './deleteProfile'
 import ProfileMenu from './profileMenu'
 import CreatePoll from './createPoll'
+import ViewProfiles from './viewProfiles'
 
 export default class User extends Component {
     constructor(props) {
         super(props)
         this.state = {
             edited: false,
-            deleted: false
+            deleted: false,
+            created: false
         }
 
     }
@@ -40,6 +42,12 @@ export default class User extends Component {
             headers: new Headers({ "content-type": "application/json" }),
             body: body
         })
+        .then(response => response.json())
+        .then(result => {
+            if(result) {
+                window.location.reload()
+            }
+        })
     }
 
     render() {
@@ -50,16 +58,12 @@ export default class User extends Component {
         
         return (
             <div className="userProfile">
+                <img src={profile.image} className='avatar' size='small' />
                 <Menu>
-                    <Dropdown className="drop" pointing text='Categories'>
+                    <Dropdown inline pointing text='Menu'>
                         {
                             (this.props.user.role == "Admin")
                                 ? <Dropdown.Menu>
-                                    <Dropdown.Item>
-                                        <Admin handleEdit={this.props.handleEdit}
-                                            userId={this.props.userId}
-                                            logOut={this.props.logOut} />
-                                    </Dropdown.Item>
                                     <Dropdown.Item>
                                         <ProfileMenu profile={this.props.user} />
                                     </Dropdown.Item>
@@ -74,6 +78,15 @@ export default class User extends Component {
                                     </Dropdown.Item>
                                     <Dropdown.Item onClick={this.props.logOut}>
                                         <span>Logout</span>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item className="admin" direction='left'>
+                                        <Dropdown text='Admin'>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item>
+                                                    <ViewProfiles userData={this.props.userData} />
+                                                </Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                                 : <Dropdown.Menu>
@@ -92,7 +105,6 @@ export default class User extends Component {
                         }
                     </Dropdown>
                 </Menu>
-                <img src={profile.image} className='avatar' size='small' />
             </div>
         )
     }

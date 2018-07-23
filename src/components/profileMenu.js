@@ -21,6 +21,9 @@ const ProfileMenu = (props) => {
                     <h5>Term Expires in {profile.termExpires}</h5>
                     <h5>Committees: {profile.committees}</h5>
                 </Card.Content>
+                <Card.Content>
+                    <Edit />
+                </Card.Content>
             </Card>
         </Modal.Content>
         </Modal>

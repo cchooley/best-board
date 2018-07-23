@@ -17,7 +17,7 @@
 
 .title {
   padding: 0vh;
-  margin: 0vh;
+  margin: 2.5vh;
   font-size: 3vw;
   border-bottom: .2vh #C0B283 solid;
   border-top: .2vh #C0B283 solid;
@@ -30,7 +30,7 @@
 }
 
 .loggedIn {
-  padding: .5vw;
+  padding: .2vw;
 }
 
 .mainLand {
@@ -91,6 +91,8 @@ a:hover {
   display: flex;
   flex-flow: row;
   align-items: center;
+  justify-content: space-between;
+  width: 10vmax;
 }
 
 .avatar {
@@ -101,7 +103,6 @@ a:hover {
 }
 
 .ui.menu {
-  align-items: flex-end;
   background: #373737;
   border: none;
   box-shadow: none;
