@@ -168,6 +168,11 @@ span {
 .gold {
   color: rgb(192, 178, 131);
 }
+
+.voteContainer {
+  display: flex;
+  flex-flow: column;
+}
 /*
 * {
   color: rgb(192, 178, 131);
