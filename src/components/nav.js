@@ -17,7 +17,8 @@ export default class Nav extends Component {
                         <User   user={this.props.user}
                                 handleEdit={this.props.handleEdit}
                                 handleDelete={this.props.handleDelete}
-                                logOut={this.props.logOut} />
+                                logOut={this.props.logOut} 
+                                handlePoll={this.props.handlePoll} />
                     </div>
                     : <div className="loggedOut">
                         <Register handleRegister={this.props.handleRegister} />

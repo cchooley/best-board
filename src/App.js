@@ -62,7 +62,6 @@ class App extends Component {
     this.setState({loggedIn: false})
     delete window.localStorage.token
     delete window.localStorage.userId
-    console.log("hello")
   }
 
   handleLogin = (event) => {
@@ -178,6 +177,7 @@ class App extends Component {
                   updateUserID={this.updateUserID} 
                   handleEdit={this.handleEdit}
                   handleDelete={this.handleDelete}
+                  handlePoll={this.handlePoll}
                   logOut={this.logOut}
                   getUsers={this.getUsers}  
                   getVotes={this.getVotes} 

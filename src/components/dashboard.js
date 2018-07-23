@@ -35,7 +35,8 @@ export default class Dashboard extends Component {
                 <Nav    user={this.state.user}
                         userId={this.props.userId}
                         loggedIn={this.props.loggedIn}
-                        logOut={this.props.logOut} />
+                        logOut={this.props.logOut}
+                        handlePoll={this.props.handlePoll} />
                 <div className="mainDash">
                     <div className="left">
                         <div className="upperLeft">
