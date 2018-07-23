@@ -20,7 +20,8 @@ class App extends Component {
       userData: [],
       loggedIn: false,
       voteData: [],
-      deleted: false
+      deleted: false,
+      edited: false
     }
   }
 
@@ -97,12 +98,12 @@ class App extends Component {
     const body = JSON.stringify({
       name: formData.get("name"),
       email: formData.get("email"),
-//      image: (formData.image) ? formData.get("image") : 'https://tinyurl.com/yc7ytv5u',
+      image: 'https://tinyurl.com/yc7ytv5u',
       organization: formData.get("organization"),
       role: formData.get("role"),
-      password: formData.get("password"),
-      committees: formData.get('committees')
+      password: formData.get("password")
     })
+    console.log(body)
     fetch(registerURL, {
       method: "POST",
       headers: new Headers({ "content-type": "application/json" }),
