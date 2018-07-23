@@ -2,109 +2,94 @@ import React, { Component } from 'react';
 import { Button, Modal, Divider } from 'semantic-ui-react'
 import { Bar } from 'react-chartjs-2';
 
+const votesURL = 'https://bestboard-db.herokuapp.com/votes'
+
 export default class Vote extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            voted: false,
+            voted: false
         }
     }
-
-    yesVote = (event, id) => {
-        const votesURL = 'https://bestboard-db.herokuapp.com/votes'
-        event.preventDefault()
-        id = this.props.voteData[0].id
-        let allVotes = this.props.voteData[0].votedYes
-        allVotes.push(this.props.user.name)
-        const yesURL = `${votesURL}/${id}`
-        const body = JSON.stringify({
-            yesVote: this.props.voteData[0].yesVote +1,
-            votedYes: allVotes
-        })
-        fetch(yesURL, {
-            method: "PUT",
-            headers: new Headers({ "content-type": "application/json" }),
-            body: body
-        })
-        .then(this.setState ({ voted: true }))
-        }
-
-    noVote = (event, id) => {
-        const votesURL = 'https://bestboard-db.herokuapp.com/votes'
-        event.preventDefault()
-        id = this.props.voteData[0].id
-        let allVotes = this.props.voteData[0].votedNo
-        allVotes.push(this.props.user.name)
-        const noURL = `${votesURL}/${id}`
-        const body = JSON.stringify({
-            noVote: this.props.voteData[0].noVote + 1,
-            votedNo: allVotes
-        })
-        fetch(noURL, {
-            method: "PUT",
-            headers: new Headers({ "content-type": "application/json" }),
-            body: body
-        })
-            .then(this.setState({ voted: true }))
-    }
-    
-    abVote = (event, id) => {
-        const votesURL = 'https://bestboard-db.herokuapp.com/votes'
-        event.preventDefault()
-        id = this.props.voteData[0].id
-        let allVotes = this.props.voteData[0].votedAb
-        allVotes.push(this.props.user.name)
-        const abURL = `${votesURL}/${id}`
-        const body = JSON.stringify({
-            abVote: this.props.voteData[0].abVote + 1,
-            votedAb: allVotes
-        })
-        fetch(abURL, {
-            method: "PUT",
-            headers: new Headers({ "content-type": "application/json" }),
-            body: body
-        })
-            .then(this.setState({ voted: true }))
-    }
-
-    // alreadyVoted = (user) => {
-
-    //     user = this.props.user.name
-    //     let history = this.props.vote.map(vote => {
-    //         return vote.votedYes.concat(vote.votedNo, vote.votedAb)
-    //     }
-    //     )
-
-    //     // for (var i = 0; i <= history.length; i++) {
-    //     //     if (history[i] == user) {
-    //     //         return false
-    //     //     }
-    //     // }
-    // }
 
     render() {
         let voteData = this.props.voteData
-
+        let user = this.props.user.name
         if (!voteData) {
             return null
         }
 
         let voteModals = this.props.voteData.map(vote => {
-            console.log(vote)
-            let hasVoted = false
+            let yesVote = (event, id) => {
+                event.preventDefault()
+                id = vote.id
+                let allVotes = vote.votedYes
+                allVotes.push(user)
+                const yesURL = `${this.votesURL}/${id}`
+                const body = JSON.stringify({
+                    yesVote: vote.yesVote + 1,
+                    votedYes: allVotes
+                })
+                fetch(yesURL, {
+                    method: "PUT",
+                    headers: new Headers({ "content-type": "application/json" }),
+                    body: body
+                })
+                    .then(this.setState({ voted: true }))
+            }
+
+            let noVote = (event, id) => {
+                event.preventDefault()
+                id = vote.id
+                let allVotes = vote.votedNo
+                allVotes.push(user)
+                const noURL = `${this.votesURL}/${id}`
+                const body = JSON.stringify({
+                    noVote: vote.noVote + 1,
+                    votedNo: allVotes
+                })
+                fetch(noURL, {
+                    method: "PUT",
+                    headers: new Headers({ "content-type": "application/json" }),
+                    body: body
+                })
+                    .then(this.setState({ voted: true }))
+            }
+
+            let abVote = (event, id) => {
+                event.preventDefault()
+                id = vote.id
+                let allVotes = vote.votedAb
+                allVotes.push(user)
+                const abURL = `${this.votesURL}/${id}`
+                const body = JSON.stringify({
+                    abVote: vote.abVote + 1,
+                    votedAb: allVotes
+                })
+                fetch(abURL, {
+                    method: "PUT",
+                    headers: new Headers({ "content-type": "application/json" }),
+                    body: body
+                })
+                    .then(this.setState({ voted: true }))
+            }
+
             let yesVotes = vote.votedYes
             let noVotes = vote.votedNo
             let abVotes = vote.votedAb
 
-            let user = this.props.user.name
             let history = yesVotes.concat(noVotes, abVotes)
+            let user = this.props.user.name
+            let userHasVoted = false
 
+            let checkVote = () => {
                 for (var i = 0; i <= history.length; i++) {
                     if (history[i] == user) {
-                        hasVoted = true
+                        userHasVoted = true
                     }
                 }
-            
+            }
+            checkVote()
 
             const data = {
                 labels: ['Yes', 'No', 'Abstain'],
@@ -140,12 +125,12 @@ export default class Vote extends Component {
                                 <h4>Opened On: {vote.openedOn.slice(0, 10)}</h4>
                                 <h4>Issue: {vote.issue}</h4>
                                 <Divider />
-                                {(!hasVoted)
+                                {(!userHasVoted)
                                     ?
                                     <Modal.Actions>
-                                        <Button onClick={this.yesVote}>{vote.option1}</Button>
-                                        <Button onClick={this.noVote}>{vote.option2}</Button>
-                                        <Button onClick={this.abVote}>{vote.option3}</Button>
+                                        <Button onClick={yesVote}>{vote.option1}</Button>
+                                        <Button onClick={noVote}>{vote.option2}</Button>
+                                        <Button onClick={abVote}>{vote.option3}</Button>
                                     </Modal.Actions>
                                     :
                                     <div>

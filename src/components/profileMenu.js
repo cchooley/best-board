@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Modal, Image, Form } from 'semantic-ui-react'
+import { Button, Header, Card, Modal, Image, Form } from 'semantic-ui-react'
 
 import Edit from './editProfile'
 import Delete from './deleteProfile'
@@ -8,12 +8,12 @@ import Delete from './deleteProfile'
 const ProfileMenu = (props) => {
     let profile = props.profile
     return (
-        <Modal trigger={<span>View Profile</span>}>
+        <Modal trigger={<span>View Profile</span>} size="mini">
         <Modal.Content>
-            <Card>
-                <Image src={profile.image} />
+            <Card fluid>
+                <Image className="cardPhoto" src={profile.image} />
                 <Card.Content>
-                    <Card.Header>{profile.name}</Card.Header>
+                    <h3>{profile.name}</h3>
                     <Card.Meta>Member since {profile.memberSince}</Card.Meta>
                     <h5>Email: {profile.email}</h5>
                     <h5>Organization: {profile.organization}</h5>
