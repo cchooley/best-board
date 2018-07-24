@@ -55,6 +55,15 @@
   color: #F4F4F4
 }
 
+.votes {
+  margin-bottom: 1.5vh;
+}
+
+.voteTrigger:hover {
+  color: rgb(192, 178, 131);
+  cursor: pointer
+}
+
 footer {
   border-top: 1vh black solid;
   background: #373737;
@@ -84,7 +93,7 @@ a:hover {
 
 .upperLeft {
   display: flex;
-  flex-flow: row;
+  flex-flow: row
 }
 
 .userProfile {
@@ -117,11 +126,6 @@ a:hover {
   justify-content: center;
   align-items: center;
 
-}
-
-
-.item:hover {
-  color: yellow;
 }
 
 .drop {
@@ -178,6 +182,10 @@ span {
 .cardPhoto {
   width: 20vh;
   height: 10vw
+}
+
+.cardHeader {
+  margin: 0vh
 }
 /*
 * {

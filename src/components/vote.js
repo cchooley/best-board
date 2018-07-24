@@ -118,7 +118,7 @@ export default class Vote extends Component {
 
                 return (
                     <div className="voteContainer">
-                        <Modal trigger={<span>{vote.name}</span>}>
+                        <Modal trigger={<span className="voteTrigger">{vote.name}</span>}>
                             <Modal.Header>Issue #{vote.id}: {vote.name}</Modal.Header>
                             <Modal.Content>
                                 <h4>Created By: {vote.createdBy}</h4>
