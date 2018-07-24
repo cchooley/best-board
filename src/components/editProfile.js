@@ -5,7 +5,7 @@ import Delete from './deleteProfile'
 
 const Edit = (props) => {
     return (
-        <Modal trigger={<Button>Edit</Button>}>
+        <Modal trigger={<span>Edit</span>}>
             <Modal.Header>Update your profile.</Modal.Header>
             <Modal.Content image>
                 <Modal.Description>

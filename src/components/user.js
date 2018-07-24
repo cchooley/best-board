@@ -83,7 +83,8 @@ export default class User extends Component {
                                         <Dropdown closeOnBlur text='Admin'>
                                             <Dropdown.Menu>
                                                 <Dropdown.Item>
-                                                    <ViewProfiles userData={this.props.userData} />
+                                                    <ViewProfiles   userData={this.props.userData} 
+                                                                    handleEdit={this.props.handleEdit} />
                                                 </Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
