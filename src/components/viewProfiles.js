@@ -19,9 +19,11 @@ const Admin = (props) => {
         )
     })
     return (
-        <Modal trigger={<span>View Profiles</span>}>
-            <Modal.Header>Board roster.</Modal.Header>
-            {allProfiles}
+        <Modal trigger={<span>Manage Profiles</span>}>
+            <Modal.Header>Board roster</Modal.Header>
+            <Modal.Content>
+                {allProfiles}
+            </Modal.Content>
         </Modal>
     )
 }

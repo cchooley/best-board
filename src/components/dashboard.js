@@ -64,7 +64,7 @@ export default class Dashboard extends Component {
                                 </div>
                             </div>
                         </div>
-                        <Messages />
+                        <Messages activitiesData={this.props.activitiesData} />
                     </div>
                     <Calendar />
                 </div>

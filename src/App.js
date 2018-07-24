@@ -11,6 +11,7 @@ const loginURL = 'https://bestboard-db.herokuapp.com/auth/login'
 const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
 const usersURL = 'https://bestboard-db.herokuapp.com/users'
 const votesURL = 'https://bestboard-db.herokuapp.com/votes'
+const activitiesURL = 'https://bestboard-db.herokuapp.com/activities'
 
 class App extends Component {
   constructor(props) {
@@ -21,13 +22,15 @@ class App extends Component {
       loggedIn: false,
       voteData: [],
       deleted: false,
-      edited: false
+      edited: false,
+      activitiesData: []
     }
   }
 
   componentDidMount() {
     this.getUsers()
     this.getVotes()
+    this.getActivities()
   }
 
   updateUserID = (userId) => {
@@ -52,6 +55,16 @@ class App extends Component {
       .then(data => {
         this.setState({
           voteData: data.votes
+        })
+      })
+  }
+
+  getActivities() {
+    fetch(activitiesURL)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          activitiesData: data.activities
         })
       })
   }
@@ -172,6 +185,7 @@ class App extends Component {
                   userId={this.state.userId} />} />
               <Route exact path='/dashboard' component={() =>
                 <Dashboard 
+                  activitiesData={this.state.activitiesData}
                   loggedIn={this.state.loggedIn}
                   userData={this.state.userData}
                   voteData={this.state.voteData} 
