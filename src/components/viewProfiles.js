@@ -8,7 +8,7 @@ const Admin = (props) => {
         return (
             <Card>
                 <Card.Content>
-                    <Image className="cardPhoto" floated='right' size='mini' src={profile.image} />
+                    <Image className="cardPhoto" floated='right' size='tiny' src={profile.image} />
                     <h4 className="cardHeader">{profile.name}</h4>
                     <Card.Meta>{profile.role}</Card.Meta>
                     <Card.Description>

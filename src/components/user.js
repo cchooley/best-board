@@ -80,7 +80,7 @@ export default class User extends Component {
                                         <span>Logout</span>
                                     </Dropdown.Item>
                                     <Dropdown.Item className="admin" direction='left'>
-                                        <Dropdown text='Admin'>
+                                        <Dropdown closeOnBlur text='Admin'>
                                             <Dropdown.Menu>
                                                 <Dropdown.Item>
                                                     <ViewProfiles userData={this.props.userData} />
