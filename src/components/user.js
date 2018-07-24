@@ -22,6 +22,7 @@ export default class User extends Component {
         event.preventDefault()
         const formData = new FormData(event.target)
         const votesURL = 'https://bestboard-db.herokuapp.com/votes'
+        const activitiesURL = 'https://bestboard-db.herokuapp.com/activities'
         const body = JSON.stringify({
             name: formData.get("name"),
             issue: formData.get("issue"),
@@ -37,19 +38,31 @@ export default class User extends Component {
             votedNo: [],
             votedAb: []
         })
+        const body2 = JSON.stringify({
+            createdBy: this.props.user.name,
+            image: this.props.user.image,
+            openedOn: new Date(),
+            activity: 'created a poll'
+        })
         fetch(votesURL, {
             method: "POST",
             headers: new Headers({ "content-type": "application/json" }),
             body: body
         })
         .then(response => response.json())
+        .then(() => {
+            fetch(activitiesURL, {
+                method: "POST",
+                headers: new Headers({ "content-type": "application/json" }),
+                body: body2
+        })
         .then(result => {
             if(result) {
                 window.location.reload()
             }
-        })
+        })}
+        )
     }
-
     render() {
         let profile = this.props.user
         if (!profile) {

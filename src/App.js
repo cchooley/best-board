@@ -127,7 +127,6 @@ class App extends Component {
       headers: new Headers({ "content-type": "application/json" }),
       body: body2
     }).then(response => response.json())
-      .then(response => console.log(response))
       .then(() => {
         fetch(registerURL, {
           method: "POST",
