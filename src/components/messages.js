@@ -10,8 +10,8 @@ const Messages = (props) => {
                 </Feed.Label>
                 <Feed.Content>
                     <Feed.Summary>
-                        <Feed.User>{activity.createdBy}</Feed.User> added a {activity.activity}
-                        <Feed.Date>Added on {activity.openedOn.slice(0, 10)}</Feed.Date>
+                        <Feed.User>{activity.createdBy}</Feed.User> {activity.activity}
+                        <br /><Feed.Date>{activity.openedOn.slice(0, 10)}</Feed.Date>
                     </Feed.Summary>
                     <Feed.Meta>
                         <Feed.Like>
@@ -20,6 +20,7 @@ const Messages = (props) => {
                         </Feed.Like>
                     </Feed.Meta>
                 </Feed.Content>
+                <Divider />
             </Feed.Event>
         )
     })

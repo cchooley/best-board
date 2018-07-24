@@ -116,25 +116,36 @@ class App extends Component {
       role: formData.get("role"),
       password: formData.get("password")
     })
-    console.log(body)
-    fetch(registerURL, {
+    const body2 = JSON.stringify({
+      createdBy: formData.get("name"),
+      image: 'https://tinyurl.com/yc7ytv5u',
+      openedOn: new Date(),
+      activity: 'created a profile'
+    })
+    fetch(activitiesURL, {
       method: "POST",
       headers: new Headers({ "content-type": "application/json" }),
-      body: body
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.token) {
-          let decode = jwtDecode(result.token)
-          this.updateUserID(decode.userId)
-          window.localStorage.token = result.token
-          window.localStorage.userId = decode.userId
-          this.setState({ loggedIn: true })
-        } else {
-          alert("This didn't work because:" + result.error)
-        }
-      })
-  }
+      body: body2
+    }).then(response => response.json())
+      .then(response => console.log(response))
+      .then(() => {
+        fetch(registerURL, {
+          method: "POST",
+          headers: new Headers({ "content-type": "application/json" }),
+          body: body
+        }).then(response => response.json())
+          .then(response => {
+            if (response.token) {
+              let decode = jwtDecode(response.token)
+              this.updateUserID(decode.userId)
+              window.localStorage.token = response.token
+              window.localStorage.userId = decode.userId
+            } else {
+              alert("This didn't work because:" + response.error)
+            }
+          }).then(this.setState({ loggedIn: true }))
+      }
+    )}
 
   handleEdit = (event, id) => {
     event.preventDefault()
@@ -180,11 +191,13 @@ class App extends Component {
                 <Landing  
                   loggedIn={this.state.loggedIn}
                   updateUserID={this.updateUserID} 
+                  handleActivity={this.handleActivity}
                   handleRegister={this.handleRegister}
                   handleLogin={this.handleLogin}
                   userId={this.state.userId} />} />
               <Route exact path='/dashboard' component={() =>
                 <Dashboard 
+                  loggedIn={this.state.loggedIn}
                   activitiesData={this.state.activitiesData}
                   loggedIn={this.state.loggedIn}
                   userData={this.state.userData}

@@ -18,10 +18,10 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount() {
-            const token = window.localStorage.token
-            if (!token) {
-                window.location.href = '/'
-            }
+        const token = window.localStorage.token
+        if (!token) {
+            window.location.href = '/'
+        }
         }
 
     render() {

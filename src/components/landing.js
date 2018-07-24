@@ -14,10 +14,6 @@ export default class Landing extends Component {
     }
 
     componentDidMount() {
-        // const token = window.localStorage
-        // if (token) {
-        //     window.location.href = '/dashboard'
-        // }
         if (this.props.loggedIn) {
             window.location.href = '/dashboard'
         }
@@ -37,7 +33,8 @@ export default class Landing extends Component {
                         <h3>Welcome to <span className="gold">BestBoard</span>, the number one new app for managing productivity in non-profit governance.</h3>
                         <h3>Create your own account or login below.</h3>
                         <div className="landButton">
-                            <Register   handleRegister={this.props.handleRegister}
+                            <Register   handleActivity={this.props.handleActivity}
+                                        handleRegister={this.props.handleRegister}
                                         updateUserID={this.props.updateUserID} />
                             <Login      handleLogin={this.props.handleLogin} 
                                         updateUserID={this.props.updateUserID}/>
