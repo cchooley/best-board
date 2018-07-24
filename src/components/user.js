@@ -4,7 +4,7 @@ import { Menu, Dropdown } from 'semantic-ui-react'
 import Delete from './deleteProfile'
 import ProfileMenu from './profileMenu'
 import CreatePoll from './createPoll'
-import ViewProfiles from './viewProfiles'
+import AdminEdit from './viewProfiles';
 
 export default class User extends Component {
     constructor(props) {
@@ -96,8 +96,8 @@ export default class User extends Component {
                                         <Dropdown closeOnBlur text='Admin'>
                                             <Dropdown.Menu>
                                                 <Dropdown.Item>
-                                                    <ViewProfiles   userData={this.props.userData} 
-                                                                    handleEdit={this.props.handleEdit} />
+                                                    <AdminEdit  userData={this.props.userData} 
+                                                                handleEdit={this.props.handleEdit} />
                                                 </Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>

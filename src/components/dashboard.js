@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
         if (!token) {
             window.location.href = '/'
         }
-        }
+    }
 
     render() {
         let profile = this.state.user
@@ -37,6 +37,7 @@ export default class Dashboard extends Component {
                         loggedIn={this.props.loggedIn}
                         logOut={this.props.logOut}
                         handleDelete={this.props.handleDelete}
+                        handleEdit={this.props.handleEdit}
                         handlePoll={this.props.handlePoll} />
                 <div className="mainDash">
                     <div className="left">

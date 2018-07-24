@@ -1,49 +1,72 @@
 import React, { Component } from 'react';
-import { Button, Card, Image, Modal } from 'semantic-ui-react'
+import { Button, Card, Image, Form, Modal } from 'semantic-ui-react'
 
 import Edit from './editProfile'
 
-class NestedModal extends Component {
-    state = { open: false }
+class AdminEdit extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            edited: false
+        }
+    }
 
-    open = () => this.setState({ open: true })
-    close = () => this.setState({ open: false })
+
+    handleEdit2 = (event, id) => {
+        event.preventDefault()
+        let usersURL = 'https://bestboard-db.herokuapp.com/users'
+        const editURL = `${usersURL}/${id}`
+        const formData = new FormData(event.target)
+        const body = JSON.stringify({
+            name: formData.get("name"),
+            email: formData.get("email"),
+            image: formData.get("image"),
+            organization: formData.get("organization"),
+            role: formData.get("role"),
+        })
+        fetch(editURL, {
+            method: "PUT",
+            headers: new Headers({ "content-type": "application/json" }),
+            body: body
+        })
+        .then(response => response.json())
+        .then(response => {
+            if(response) {
+                window.location.reload()
+            }
+        })
+    }
 
     render() {
-        const { open } = this.state
 
-        return (
-            <Edit
-            open={open}
-            onOpen={this.open}
-            onClose={this.close} />
-        )
-    }
-}
-
-const AdminEdit = (props) => {
-        let allProfiles = props.userData.map(profile => {
+        let allProfiles = this.props.userData.map(profile => {
         return (
             <Card>
                 <Card.Content>
                     <Image className="cardPhoto" floated='right' size='tiny' src={profile.image} />
                     <h4 className="cardHeader">{profile.name}</h4>
                     <Card.Meta>{profile.role}</Card.Meta>
+                    <Card.Meta>Company ID: {profile.id}</Card.Meta>
                     <Card.Description>{profile.email}</Card.Description>
                     <Card.Description>Member since {profile.memberSince}</Card.Description>
                 </Card.Content>
-                <Button floated='right'><NestedModal /></Button>
+                <Button floated='right'>
+                    <Edit   id={profile.id}
+                            handleEdit2={this.handleEdit2} />
+                </Button>
             </Card>
         )
     })
     return (
-        <Modal trigger={<span>Manage Profiles</span>}>
+        <Modal trigger={<span>Manage Profiles</span>} closeOnDimmerClick={false} >
             <Modal.Header>Board Roster</Modal.Header>
-            <Modal.Content image>
+            <Modal.Content>
                 {allProfiles}
             </Modal.Content>
+            <Button onClick={this.reload}>Close</Button>
         </Modal>
     )
+}
 }
 
 export default AdminEdit;
