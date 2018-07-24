@@ -26,7 +26,8 @@ export default class User extends Component {
         const body = JSON.stringify({
             name: formData.get("name"),
             issue: formData.get("issue"),
-            openedOn: new Date(),
+            openedOn: formData.get("openedOn"),
+            closedOn: formData.get("closedOn"),
             createdBy: this.props.user.name,
             option1: "Yes",
             option2: "No",
@@ -62,7 +63,7 @@ export default class User extends Component {
             }
         })}
         )
-    }
+        }
     render() {
         let profile = this.props.user
         if (!profile) {

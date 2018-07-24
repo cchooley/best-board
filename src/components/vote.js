@@ -123,6 +123,7 @@ export default class Vote extends Component {
                             <Modal.Content>
                                 <h4>Created By: {vote.createdBy}</h4>
                                 <h4>Opened On: {vote.openedOn.slice(0, 10)}</h4>
+                                <h4>Closes On: {vote.closedOn.slice(0, 10)}</h4>
                                 <h4>Issue: {vote.issue}</h4>
                                 <Divider />
                                 {(!userHasVoted)

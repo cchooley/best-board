@@ -28,7 +28,7 @@ const Messages = (props) => {
         <div className="messages">
             <Feed>
                 <Divider horizontal>Recent Activity</Divider>
-                {allActivities}
+                {allActivities.reverse()}
             </Feed>
         </div>
     )
