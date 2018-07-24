@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "chart.js": "^2.7.2",
+    "focus-trap-react": "^3.1.2",
     "js-datepicker": "^3.3.2",
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.2",

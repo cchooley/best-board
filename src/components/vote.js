@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Button, Modal, Divider } from 'semantic-ui-react'
 import { Bar } from 'react-chartjs-2';
 
-const votesURL = 'https://bestboard-db.herokuapp.com/votes'
-
 export default class Vote extends Component {
     constructor(props) {
         super(props)
@@ -14,7 +12,6 @@ export default class Vote extends Component {
 
     render() {
         let voteData = this.props.voteData
-        let user = this.props.user.name
         if (!voteData) {
             return null
         }

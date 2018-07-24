@@ -198,7 +198,6 @@ class App extends Component {
                 <Dashboard 
                   loggedIn={this.state.loggedIn}
                   activitiesData={this.state.activitiesData}
-                  loggedIn={this.state.loggedIn}
                   userData={this.state.userData}
                   voteData={this.state.voteData} 
                   edited={this.state.edited}

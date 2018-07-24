@@ -1,10 +1,28 @@
-import React from 'react';
-import { Button, Card, Image, Divider, Modal } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Button, Card, Image, Modal } from 'semantic-ui-react'
 
 import Edit from './editProfile'
 
-const Admin = (props) => {
-    let allProfiles = props.userData.map(profile => {
+class NestedModal extends Component {
+    state = { open: false }
+
+    open = () => this.setState({ open: true })
+    close = () => this.setState({ open: false })
+
+    render() {
+        const { open } = this.state
+
+        return (
+            <Edit
+            open={open}
+            onOpen={this.open}
+            onClose={this.close} />
+        )
+    }
+}
+
+const AdminEdit = (props) => {
+        let allProfiles = props.userData.map(profile => {
         return (
             <Card>
                 <Card.Content>
@@ -14,18 +32,18 @@ const Admin = (props) => {
                     <Card.Description>{profile.email}</Card.Description>
                     <Card.Description>Member since {profile.memberSince}</Card.Description>
                 </Card.Content>
-                <Button floated='right'><Edit /></Button>
+                <Button floated='right'><NestedModal /></Button>
             </Card>
         )
     })
     return (
         <Modal trigger={<span>Manage Profiles</span>}>
-            <Modal.Header>Board roster</Modal.Header>
-            <Modal.Content>
+            <Modal.Header>Board Roster</Modal.Header>
+            <Modal.Content image>
                 {allProfiles}
             </Modal.Content>
         </Modal>
     )
 }
 
-export default Admin;
+export default AdminEdit;

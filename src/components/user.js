@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Divider, Menu, Dropdown, Button, Modal, Form } from 'semantic-ui-react'
-
+import { Menu, Dropdown } from 'semantic-ui-react'
 
 import Delete from './deleteProfile'
 import ProfileMenu from './profileMenu'

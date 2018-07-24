@@ -1,8 +1,7 @@
 import React from 'react';
-import { Button, Header, Card, Modal, Image, Form } from 'semantic-ui-react'
+import { Card, Modal, Image } from 'semantic-ui-react'
 
 import Edit from './editProfile'
-import Delete from './deleteProfile'
 
 
 const ProfileMenu = (props) => {

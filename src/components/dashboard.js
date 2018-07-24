@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Divider, Menu, Dropdown, Button, Modal, Form } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
+import { Divider } from 'semantic-ui-react'
 
 import Nav from './nav'
 import Vote from './vote'
