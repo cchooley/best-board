@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 
+
 import Landing from './components/landing'
 import Footer from './components/footer'
 import Dashboard from './components/dashboard'
@@ -184,7 +185,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          
             <Switch>
               <Route exact path='/' component={() => 
                 <Landing  
