@@ -5,6 +5,9 @@
 
 .header {
   background-color: #373737;
+  background-image: url(./assets/tech/background.jpg);
+  background-size: contain;
+  background-blend-mode: color-burn;
   font-family: 'Muli', sans-serif;
   color: #DCD0C0;
   border-bottom: 1vh black solid;
@@ -13,6 +16,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 2.5vh;
+}
+
+.sectionHead {
+  background: inherit;
 }
 
 .title {
@@ -102,24 +109,29 @@ a:hover {
 }
 
 .userProfile {
+  background: #1A1A1A;
   display: flex;
   flex-flow: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 10vmax;
+  align-items: flex-end;
+  width: 13.5vmax;
+  padding: 1.2vh .25vh;
+  outline: .1vh rgb(192, 178, 131) solid;
 }
 
 .avatar {
-  height: 8vh;
-  width: 4vw;
+  height: 5.5vmax;
+  width: 5.5vmax;
   margin-left: 1vw;
   border-radius: 1vw;
 }
 
 .ui.menu {
-  background: #373737;
+  margin: 1vw;
+  width: 9vw;
+  background: inherit;
   border: none;
   box-shadow: none;
+  font-size: 1.25vmax
 }
 
 .ui.menu:hover {

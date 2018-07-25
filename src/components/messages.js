@@ -1,5 +1,5 @@
 import React from 'react'
-import { Feed, Icon, Divider } from 'semantic-ui-react'
+import { Feed, Icon, Divider, Header } from 'semantic-ui-react'
 
 const Messages = (props) => {
     let allActivities = props.activitiesData.map(activity => {
@@ -26,7 +26,9 @@ const Messages = (props) => {
     return (
         <div className="messages">
             <Feed>
-                <Divider horizontal>Recent Activity</Divider>
+                <Divider horizontal>
+                    <Header className="sectionHead" as='h3'>Recent Activity</Header>
+                </Divider>
                     {allActivities.reverse()}
             </Feed>
         </div>

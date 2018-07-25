@@ -123,30 +123,29 @@ class App extends Component {
       openedOn: new Date(),
       activity: 'created a profile'
     })
-    console.log(body)
     fetch(activitiesURL, {
       method: "POST",
       headers: new Headers({ "content-type": "application/json" }),
       body: body2
+    })
+
+    fetch(registerURL, {
+      method: "POST",
+      headers: new Headers({ "content-type": "application/json" }),
+      body: body
     }).then(response => response.json())
-      .then(() => {
-        fetch(registerURL, {
-          method: "POST",
-          headers: new Headers({ "content-type": "application/json" }),
-          body: body
-      }).then(response => response.json())
-        .then(response => {
-          if (response.token) {
-            let decode = jwtDecode(response.token)
-            this.updateUserID(decode.userId)
-            window.localStorage.token = response.token
-            window.localStorage.userId = decode.userId
-          } else {
-            alert("This didn't work because:" + response.error)
-          }
-        }).then(this.logIn())
+      .then(response => {
+        if (response.token) {
+          let decode = jwtDecode(response.token)
+          this.updateUserID(decode.userId)
+          window.localStorage.token = response.token
+          window.localStorage.userId = decode.userId
+          this.logIn()
+        } else {
+          alert("This didn't work because:" + response.error)
+        }
       })
-    }
+  }
 
   handleEdit = (event, id) => {
     event.preventDefault()

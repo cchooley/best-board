@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Divider } from 'semantic-ui-react'
+import { Divider, Header } from 'semantic-ui-react'
 
 import Nav from './nav'
 import Vote from './vote'
@@ -45,7 +45,7 @@ export default class Dashboard extends Component {
                             <div className="items">
                                 <div className="tasks">
                                     <Divider horizontal>
-                                        Action Items
+                                        <Header className="sectionHead" as='h3'>Action Items</Header>
                                     </Divider>
                                     <ul>
                                         <li>Do this</li>
@@ -55,7 +55,7 @@ export default class Dashboard extends Component {
                                 </div>
                                 <div className="votes">
                                     <Divider horizontal>
-                                        Open Polls
+                                        <Header className="sectionHead" as='h3'>Open Polls</Header>
                                     </Divider>
                                         <Vote   user={this.state.user}
                                                 yesVote={this.props.yesVote}

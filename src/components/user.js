@@ -74,7 +74,7 @@ export default class User extends Component {
         return (
             <div className="userProfile">
                 <img src={profile.image} className='avatar' size='small' />
-                <Menu>
+                <Menu className="userMenu">
                     <Dropdown inline pointing text='Menu'>
                         {
                             (this.props.user.role == "Admin")

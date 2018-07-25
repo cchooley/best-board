@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Calendar from "react-big-calendar";
-import { Divider } from 'semantic-ui-react'
+import { Divider, Header } from 'semantic-ui-react'
 import moment from "moment";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -33,7 +33,9 @@ class App extends Component {
         return (
             <div className="calendar">
                 <header className="App-header">
-                    <Divider horizontal>Calendar</Divider>
+                    <Divider horizontal>
+                        <Header className="sectionHead" as='h3'>Events Calendar</Header>
+                    </Divider>
                 </header>
                 <Calendar
                     defaultDate={new Date()}
