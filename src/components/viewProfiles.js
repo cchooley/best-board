@@ -37,6 +37,10 @@ class AdminEdit extends Component {
         })
     }
 
+    reload = () => {
+        window.location.reload()
+    }
+
     render() {
 
         let allProfiles = this.props.userData.map(profile => {
@@ -59,11 +63,15 @@ class AdminEdit extends Component {
     })
     return (
         <Modal trigger={<span>Manage Profiles</span>} closeOnDimmerClick={false} >
-            <Modal.Header>Board Roster</Modal.Header>
+            <Modal.Header>
+                <div className="mHeader">
+                    Board Roster 
+                    <Button onClick={this.reload}>Close</Button>
+                </div>
+            </Modal.Header>
             <Modal.Content>
                 {allProfiles}
             </Modal.Content>
-            <Button onClick={this.reload}>Close</Button>
         </Modal>
     )
 }

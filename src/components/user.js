@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Dropdown } from 'semantic-ui-react'
+import moment from "moment";
 
 import Delete from './deleteProfile'
 import ProfileMenu from './profileMenu'
@@ -25,7 +26,7 @@ export default class User extends Component {
         const body = JSON.stringify({
             name: formData.get("name"),
             issue: formData.get("issue"),
-            openedOn: formData.get("openedOn"),
+            openedOn: moment(),
             closedOn: formData.get("closedOn"),
             createdBy: this.props.user.name,
             option1: "Yes",
@@ -41,7 +42,7 @@ export default class User extends Component {
         const body2 = JSON.stringify({
             createdBy: this.props.user.name,
             image: this.props.user.image,
-            openedOn: new Date(),
+            openedOn: moment(),
             activity: 'created a poll'
         })
         fetch(votesURL, {

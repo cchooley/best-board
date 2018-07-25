@@ -187,6 +187,21 @@ span {
 .cardHeader {
   margin: 0vh
 }
+
+.mHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.datePickerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 /*
 * {
   color: rgb(192, 178, 131);

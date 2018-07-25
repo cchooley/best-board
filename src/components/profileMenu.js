@@ -1,13 +1,17 @@
 import React from 'react';
-import { Card, Modal, Image } from 'semantic-ui-react'
+import { Card, Modal, Image, Button } from 'semantic-ui-react'
 
 import Edit from './editProfile'
 
+let reload = () => {
+    window.location.reload()
+}
 
 const ProfileMenu = (props) => {
+
     let profile = props.profile
     return (
-        <Modal trigger={<span>View Profile</span>} size="mini">
+        <Modal trigger={<span>View Profile</span>} size="mini" closeOnDimmerClick={false}>
         <Modal.Content>
             <Card fluid>
                 <Image className="cardPhoto" src={profile.image} />
@@ -22,6 +26,7 @@ const ProfileMenu = (props) => {
                 </Card.Content>
                 <Card.Content>
                     <Edit />
+                    <Button onClick={reload}>Close</Button>
                 </Card.Content>
             </Card>
         </Modal.Content>

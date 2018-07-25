@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import { Button, Modal, Form } from 'semantic-ui-react'
 
 class Edit extends Component {
-    state = { open: false }
-
-    open = () => this.setState({ open: true })
-    close = () => this.setState({ open: false })
-
     render() {
-        const { open } = this.state
-
         return (
-            <Modal trigger={<span>Edit</span>}>
+            <Modal trigger={<Button>Edit</Button>}>
                 <Modal.Header>Update your profile.</Modal.Header>
                 <Modal.Content image>
                     <Modal.Description>
