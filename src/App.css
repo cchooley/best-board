@@ -141,7 +141,7 @@ span {
   background: rgb(220, 208, 192, .3);
   border: .2vh black solid;
   margin: .1vw;
-  padding: .2vw .5vw;
+  padding: .2vw 2vw;
 }
 
 .items:hover {
@@ -152,7 +152,7 @@ span {
   background: rgb(55, 55, 55, .2);
   border: .2vh black solid;
   margin: .1vw;
-  padding: .2vw .5vw;
+  padding: .2vw 2vw;
 }
 
 .messages:hover {
@@ -163,7 +163,7 @@ span {
   background: rgb(244, 244, 244, .2);
   border: .2vh black solid;
   margin: .1vw;
-  padding: .2vw .5vw;
+  padding: .2vw 2vw;
 }
 
 .calendar:hover {
@@ -201,6 +201,7 @@ span {
   justify-content: space-around;
   align-items: center;
 }
+
 
 /*
 * {
