@@ -42,20 +42,12 @@ class createPoll extends Component {
                             <label>Please provide a short description of the issue.</label>
                             <input name='issue' />
                         </Form.Field>
-                        <div className="datePickerContainer">
-                            <Form.Field>
-                                <label>When will this poll open?</label>
-                                <DatePicker name='openedOn'
-                                    selected={this.state.openDate}
-                                    onChange={this.handleOpenChange} />
-                            </Form.Field>
-                            <Form.Field>
-                                <label>How long will this poll remain open?</label>
-                                <DatePicker name='closedOn' 
-                                            selected={this.state.closeDate}
-                                            onChange={this.handleCloseChange} />
-                            </Form.Field>
-                        </div>
+                        <Form.Field>
+                            <label>When will this poll close?</label>
+                            <DatePicker name='closedOn' 
+                                        selected={this.state.closeDate}
+                                        onChange={this.handleCloseChange} />
+                        </Form.Field>
                     <Button type="submit">Submit</Button>
                     </Form>
                     </Modal.Content>

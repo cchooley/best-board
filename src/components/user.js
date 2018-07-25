@@ -62,8 +62,7 @@ export default class User extends Component {
                 window.location.reload()
             }
         })}
-        )
-        }
+    )}
     render() {
         let profile = this.props.user
         if (!profile) {
