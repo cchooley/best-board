@@ -18,11 +18,11 @@ const ProfileMenu = (props) => {
                 <Card.Content>
                     <h3>{profile.name}</h3>
                     <Card.Meta>Member since {profile.memberSince}</Card.Meta>
-                    <h5>Email: {profile.email}</h5>
-                    <h5>Organization: {profile.organization}</h5>
-                    <h5>Role: {profile.role}</h5>
-                    <h5>Term Expires in {profile.termExpires}</h5>
-                    <h5>Committees: {profile.committees}</h5>
+                    <Card.Description>Email: {profile.email}</Card.Description>
+                    <Card.Description>Organization: {profile.organization}</Card.Description>
+                    <Card.Description>Role: {profile.role}</Card.Description>
+                    <Card.Description>Term Expires in {profile.termExpires}</Card.Description>
+                    <Card.Description>Committees: {profile.committees}</Card.Description>
                 </Card.Content>
                 <Card.Content>
                     <Edit />

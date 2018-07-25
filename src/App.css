@@ -18,12 +18,22 @@
   padding: 2.5vh;
 }
 
+.footer {
+  background-color: #373737;
+  background-image: url(./assets/tech/background.jpg);
+  background-size: contain;
+  background-blend-mode: color-burn;
+  font-family: 'Muli', sans-serif;
+  color: #DCD0C0;
+}
+
 .sectionHead {
   background: inherit;
 }
 
 .title {
   padding: 0vh;
+  background: #32312E;
   margin: 2.5vh;
   font-size: 7vmin;
   border-bottom: .2vh #C0B283 solid;
@@ -76,11 +86,8 @@
   cursor: pointer
 }
 
-footer {
-  border-top: 1vh black solid;
-  background: #373737;
-  color: #DCD0C0;
-  padding: 1vh;
+.tasksList {
+  list-style-type: none
 }
 
 a {
@@ -109,13 +116,12 @@ a:hover {
 }
 
 .userProfile {
-  background: #1A1A1A;
+  background: inherit;
   display: flex;
   flex-flow: row;
   align-items: flex-end;
-  width: 13.5vmax;
+  margin-left: .5vw;
   padding: 1.2vh .25vh;
-  outline: .1vh rgb(192, 178, 131) solid;
 }
 
 .avatar {

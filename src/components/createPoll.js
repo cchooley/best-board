@@ -30,7 +30,7 @@ class createPoll extends Component {
 
     render() {
         return (
-                <Modal trigger={<span>Create Poll</span>}>
+                <Modal trigger={<span>Create Poll</span>} size="small">
                     <Modal.Header>Fill out the information to create a poll.</Modal.Header>
                     <Modal.Content>
                     <Form onSubmit={this.props.handlePoll}>

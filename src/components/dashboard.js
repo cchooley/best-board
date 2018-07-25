@@ -47,11 +47,11 @@ export default class Dashboard extends Component {
                                     <Divider horizontal>
                                         <Header className="sectionHead" as='h3'>Action Items</Header>
                                     </Divider>
-                                    <ul>
-                                        <li>Do this</li>
-                                        <li>Do this</li>
-                                        <li>Do this</li>
-                                    </ul>
+                                    <div className="tasksList">
+                                        <div>Do this</div>
+                                        <div>Do this</div>
+                                        <div>Do this</div>
+                                    </div>
                                 </div>
                                 <div className="votes">
                                     <Divider horizontal>
