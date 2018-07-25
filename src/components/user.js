@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Menu, Dropdown } from 'semantic-ui-react'
 import moment from "moment";
+import { Elements, StripeProvider } from 'react-stripe-elements';
 
+import Payment from './payment';
 import Delete from './deleteProfile'
 import ProfileMenu from './profileMenu'
 import CreatePoll from './createPoll'
@@ -83,6 +85,13 @@ export default class User extends Component {
                                     <Dropdown.Item>
                                         <CreatePoll handlePoll={this.handlePoll} 
                                                     user={this.props.user} />
+                                    </Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+                                            <Elements>
+                                                <Payment />
+                                            </Elements>
+                                        </StripeProvider>
                                     </Dropdown.Item>
                                     <Dropdown.Item>
                                         <Delete handleDelete={this.props.handleDelete}

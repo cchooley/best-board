@@ -20,7 +20,6 @@ const Messages = (props) => {
                         </Feed.Like>
                     </Feed.Meta>
                 </Feed.Content>
-                <Divider />
             </Feed.Event>
         )
     })

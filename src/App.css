@@ -18,7 +18,7 @@
 .title {
   padding: 0vh;
   margin: 2.5vh;
-  font-size: 3vw;
+  font-size: 7vmin;
   border-bottom: .2vh #C0B283 solid;
   border-top: .2vh #C0B283 solid;
 }
@@ -47,14 +47,19 @@
 
 .innerLand {
   background-color: rgb(55, 55, 55, .8);
-  margin: 15vh;
-  padding: 8vh;
+  margin: 10vmax;
+  padding: 7vmin;
   display: flex;
   flex-flow: column;
   border: .5vh #DCD0C0 solid;
   color: #F4F4F4
 }
 
+.landButton {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
 .votes {
   margin-bottom: 1.5vh;
 }

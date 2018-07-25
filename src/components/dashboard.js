@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Divider } from 'semantic-ui-react'
-import { Elements, StripeProvider } from 'react-stripe-elements';
-import CheckoutForm from './checkoutForm';
 
 import Nav from './nav'
 import Vote from './vote'
@@ -69,14 +67,6 @@ export default class Dashboard extends Component {
                         <Messages activitiesData={this.props.activitiesData} />
                     </div>
                     <div className="right">
-                        <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
-                            <div className="example">
-                                <h1>React Stripe Elements Example</h1>
-                                <Elements>
-                                    <CheckoutForm />
-                                </Elements>
-                            </div>
-                        </StripeProvider>
                         <Calendar />
                     </div>
                 </div>
