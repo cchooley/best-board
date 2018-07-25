@@ -123,6 +123,7 @@ class App extends Component {
       openedOn: new Date(),
       activity: 'created a profile'
     })
+    console.log(body)
     fetch(activitiesURL, {
       method: "POST",
       headers: new Headers({ "content-type": "application/json" }),
@@ -133,19 +134,19 @@ class App extends Component {
           method: "POST",
           headers: new Headers({ "content-type": "application/json" }),
           body: body
-        }).then(response => response.json())
-          .then(response => {
-            if (response.token) {
-              let decode = jwtDecode(response.token)
-              this.updateUserID(decode.userId)
-              window.localStorage.token = response.token
-              window.localStorage.userId = decode.userId
-            } else {
-              alert("This didn't work because:" + response.error)
-            }
-          }).then(this.setState({ loggedIn: true }))
-      }
-    )}
+      }).then(response => response.json())
+        .then(response => {
+          if (response.token) {
+            let decode = jwtDecode(response.token)
+            this.updateUserID(decode.userId)
+            window.localStorage.token = response.token
+            window.localStorage.userId = decode.userId
+          } else {
+            alert("This didn't work because:" + response.error)
+          }
+        }).then(this.logIn())
+      })
+    }
 
   handleEdit = (event, id) => {
     event.preventDefault()
