@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Divider, Header } from 'semantic-ui-react'
+import { Divider, Header, Button } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Elements, StripeProvider } from 'react-stripe-elements';
 
 import Nav from './nav'
 import Vote from './vote'
 import Calendar from './calendar'
 import Messages from './messages'
+import Payment from './payment'
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -47,10 +50,25 @@ export default class Dashboard extends Component {
                                     <Divider horizontal>
                                         <Header className="sectionHead" as='h3'>Action Items</Header>
                                     </Divider>
-                                    <div className="tasksList">
-                                        <div>Do this</div>
-                                        <div>Do this</div>
-                                        <div>Do this</div>
+                                    <div className="tasksList">                                        
+                                        <div>
+                                            <div>It looks like you haven't paid your yearly dues.</div>
+                                            <div className="payButtons">
+                                                <StripeProvider apiKey="pk_test_LwL4RUtinpP3PXzYirX2jNfR">
+                                                    <Button.Group>
+                                                        <Button className="bOr" basic color="green" size="tiny">
+                                                            <Elements>
+                                                                <Payment />
+                                                            </Elements>
+                                                        </Button>
+                                                        <Button.Or />
+                                                        <Button className="bOr" basic color="red" size="tiny">
+                                                            Volunteer
+                                                        </Button>
+                                                    </Button.Group>
+                                                </StripeProvider>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="votes">

@@ -7,6 +7,7 @@ import jwtDecode from 'jwt-decode'
 import Landing from './components/landing'
 import Footer from './components/footer'
 import Dashboard from './components/dashboard'
+import Payment from './components/payment'
 
 const loginURL = 'https://bestboard-db.herokuapp.com/auth/login'
 const registerURL = 'https://bestboard-db.herokuapp.com/auth/register'
@@ -210,6 +211,8 @@ class App extends Component {
                   getVotes={this.getVotes} 
                   userId={this.state.userId} />} />
             </Switch>
+            <Route exact path='./payment' component={() => 
+              <Payment />} />
           <Footer />
         </div>
       </BrowserRouter>

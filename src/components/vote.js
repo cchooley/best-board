@@ -115,35 +115,37 @@ export default class Vote extends Component {
 
                 return (
                     <div className="voteContainer">
-                        <Modal trigger={<span className="voteTrigger">{vote.name}</span>}>
-                            <Modal.Header>Issue #{vote.id}: {vote.name}</Modal.Header>
-                            <Modal.Content>
-                                <h4>Created By: {vote.createdBy}</h4>
-                                <h4>Opened On: {vote.openedOn.slice(0, 10)}</h4>
-                                <h4>Closes On: {vote.closedOn.slice(0, 10)}</h4>
-                                <h4>Issue: {vote.issue}</h4>
-                                <Divider />
-                                {(!userHasVoted)
-                                    ?
-                                    <Modal.Actions>
-                                        <Button onClick={yesVote}>{vote.option1}</Button>
-                                        <Button onClick={noVote}>{vote.option2}</Button>
-                                        <Button onClick={abVote}>{vote.option3}</Button>
-                                    </Modal.Actions>
-                                    :
-                                    <div>
-                                        <h2>Thank you for voting!</h2>
-                                        <Bar data={data}
-                                            width={20}
-                                            height={10}
-                                            options={options} />
-                                        <h3>Yes votes: {vote.votedYes.join(', ')}</h3>
-                                        <h3>No votes: {vote.votedNo.join(', ')}</h3>
-                                        <h3>Abstained: {vote.votedAb.join(', ')}</h3>
-                                    </div>
-                                }
-                            </Modal.Content>
-                        </Modal>
+                        <div className="voteSelect">
+                            <Modal trigger={<Button basic color='black' className="voteTrigger">{vote.name}</Button>}>
+                                <Modal.Header>Issue #{vote.id}: {vote.name}</Modal.Header>
+                                <Modal.Content>
+                                    <h4>Created By: {vote.createdBy}</h4>
+                                    <h4>Opened On: {vote.openedOn.slice(0, 10)}</h4>
+                                    <h4>Closes On: {vote.closedOn.slice(0, 10)}</h4>
+                                    <h4>Issue: {vote.issue}</h4>
+                                    <Divider />
+                                    {(!userHasVoted)
+                                        ?
+                                        <Modal.Actions>
+                                            <Button onClick={yesVote}>{vote.option1}</Button>
+                                            <Button onClick={noVote}>{vote.option2}</Button>
+                                            <Button onClick={abVote}>{vote.option3}</Button>
+                                        </Modal.Actions>
+                                        :
+                                        <div>
+                                            <h2>Thank you for voting!</h2>
+                                            <Bar data={data}
+                                                width={20}
+                                                height={10}
+                                                options={options} />
+                                            <h3>Yes votes: {vote.votedYes.join(', ')}</h3>
+                                            <h3>No votes: {vote.votedNo.join(', ')}</h3>
+                                            <h3>Abstained: {vote.votedAb.join(', ')}</h3>
+                                        </div>
+                                    }
+                                </Modal.Content>
+                            </Modal>
+                        </div>
                     </div>
                 )
             })

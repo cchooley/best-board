@@ -25,6 +25,7 @@
   background-blend-mode: color-burn;
   font-family: 'Muli', sans-serif;
   color: #DCD0C0;
+  padding: 2vw;
 }
 
 .sectionHead {
@@ -51,25 +52,64 @@
 }
 
 .mainLand {
-  background: url(./assets/hero1.jpg);
-  background-size: cover;
-  background-color: #DCD0C0;
-  background-blend-mode: luminosity;
   width: 100%;
-  height: auto;
+  height: 100%;
+  position: relative;
+  min-height: 100%;
   display: flex;
+  flex-flow: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
-.innerLand {
-  background-color: rgb(55, 55, 55, .8);
-  margin: 10vmax;
-  padding: 7vmin;
+.innerLeft {
+  background-image: url('./assets/possiblestock4.jpg');
+  background-color: rgb(220, 208, 192, .5);
+  background-blend-mode: luminosity;
+  background-size: cover;
+  float: left;
+  width: 100%;
+  outline: .5vw solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerRight {
+  background-image: url('./assets/possiblestock3.jpeg');
+  background-color: rgb(220, 208, 192, .5);
+  background-blend-mode: luminosity;
+  background-size: cover;
+  float: right;
+  width: 100%;
+  outline: .5vw solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftLand {
+  background-color: rgb(55, 55, 55, .85);
   display: flex;
   flex-flow: column;
-  border: .5vh #DCD0C0 solid;
-  color: #F4F4F4
+  color: #F4F4F4;
+  width: 25vmax;
+  margin: 10vmax;
+  padding: 7vmin;
+  height: 100%; 
+  min-height: 100%; 
+}
+
+.rightLand {
+  background-color: rgb(55, 55, 55, .85);
+  display: flex;
+  flex-flow: column;
+  color: #F4F4F4;
+  width: 25vmax;
+  margin: 10vmax;
+  padding: 7vmin;
+  height: 100%; 
+  min-height: 100%; 
 }
 
 .landButton {
@@ -77,17 +117,22 @@
   flex-flow: row;
   justify-content: center;
 }
+
 .votes {
   margin-bottom: 1.5vh;
 }
 
-.voteTrigger:hover {
-  color: rgb(192, 178, 131);
-  cursor: pointer
+.voteTrigger {
+  width: 20vmax;
+}
+
+.voteSelect {
+  margin: .75vh;
 }
 
 .tasksList {
-  list-style-type: none
+  display: flex;
+  flex-flow: column;
 }
 
 a {
@@ -179,7 +224,7 @@ span {
 }
 
 .messages:hover {
-  background: rgb(55, 55, 55, .5);
+  background: rgb(55, 55, 55, .3);
 }
 
 .calendar {
@@ -193,13 +238,17 @@ span {
   background: rgb(244, 244, 244, 1);
 }
 
-.gold {
+.hLanding {
+  font-size: 4vh;
   color: rgb(192, 178, 131);
+  margin: 1vh;
 }
 
 .voteContainer {
   display: flex;
   flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardPhoto {
@@ -225,6 +274,17 @@ span {
   align-items: center;
 }
 
+.gold {
+    color: rgb(192, 178, 131);
+}
+
+.payButtons {
+  margin: 1vh
+}
+
+.bOr {
+  width: 10vmax;
+}
 
 /*
 * {

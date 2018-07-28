@@ -27,16 +27,25 @@ export default class Landing extends Component {
                         updateUserID={this.props.updateUserID}
                         loggedIn={this.props.loggedIn}/>
                 <div className="mainLand">
-                    <div className="innerLand">
-                        <h1 className="big gold">Get in motion.</h1>
-                        <h3>Welcome to <span className="gold">BestBoard</span>, a new app for managing productivity in non-profit governance.</h3>
-                        <h4>Create your own account or login below.</h4>
-                        <div className="landButton">
-                            <Register   handleActivity={this.props.handleActivity}
-                                        handleRegister={this.props.handleRegister}
-                                        updateUserID={this.props.updateUserID} />
-                            <Login      handleLogin={this.props.handleLogin} 
-                                        updateUserID={this.props.updateUserID}/>
+                    <div className="innerLeft">
+                        <div className="leftLand">
+                            <h1 className="hLanding">Welcome back.</h1>
+                            <h3>Login below</h3>
+                            <div className="landButton">
+                                <Login      handleLogin={this.props.handleLogin} 
+                                            updateUserID={this.props.updateUserID}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="innerRight">
+                        <div className="rightLand">
+                            <h1 className="hLanding">Get in motion.</h1>
+                            <h3>Create your own account</h3>
+                            <div className="landButton">
+                                <Register handleActivity={this.props.handleActivity}
+                                    handleRegister={this.props.handleRegister}
+                                    updateUserID={this.props.updateUserID} />
+                            </div>
                         </div>
                     </div>
                 </div>
