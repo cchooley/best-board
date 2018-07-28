@@ -3,7 +3,7 @@
 
 ![site image](screenshot.png)
 
-This is a full-stack web application coded in React and designed specifically to improve productivity of 501(c)3 Boards of Directors. Its current iteration has features such as accont creation (protected with auth via bCrypt and JWT), voting management, static payment processing with Stripe, admin features and full CRUD functionality. Future versions will implement dynamic payment processing, task management tracking, and document uploads (and probably much more beyond that).
+This is a full-stack web application coded in React and designed specifically to improve productivity of 501(c)3 Boards of Directors. Its current iteration has features such as account creation (protected with auth via bCrypt and JWT), voting management, static payment processing with Stripe, admin features and full CRUD functionality. Future versions will implement dynamic payment processing, task management tracking, and document uploads (and probably much more beyond that).
 
 ## Installation
 
